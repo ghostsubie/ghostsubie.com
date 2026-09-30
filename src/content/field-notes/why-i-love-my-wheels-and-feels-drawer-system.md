@@ -3,7 +3,7 @@ title: "Why I Love My Wheels & Feels Drawer System"
 description: "The Ghost's trunk went from chaos to camp-ready in one install. Here's what a drawer system changed about how we pack."
 pubDate: 2026-09-18
 category: "Rig Builds"
-image: "/images/ghost-basecamp-lineup.jpg"
+image: "/images/field-drawer.jpg"
 featured: true
 ---
 
