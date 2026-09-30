@@ -1,4 +1,6 @@
 ---
+import SocialLinks from './SocialLinks.astro';
+
 const nav = [
   { href: '/about', label: 'About' },
   { href: '/podcast', label: 'Podcast' },
@@ -13,6 +15,7 @@ const nav = [
     <div class="footer-main">
       <p class="footer-brand">Ghost Subie Adventures</p>
       <p class="footer-tag">Preparedness Without Panic &middot; San Antonio, Texas</p>
+      <SocialLinks />
       <p class="footer-copy">&copy; 2026 Ghost Subie Adventures</p>
     </div>
     <nav aria-label="Footer">
@@ -50,6 +53,7 @@ const nav = [
     color: var(--ink);
   }
   .footer-tag { color: var(--muted); font-size: 0.98rem; margin: 0 0 1.2rem; }
+  .footer-main .social-row { margin: 0 0 1.4rem; }
   .footer-copy { margin: 0; color: var(--muted); font-size: 0.88rem; }
   .footer-nav {
     list-style: none;

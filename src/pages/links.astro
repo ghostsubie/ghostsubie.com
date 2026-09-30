@@ -1,0 +1,160 @@
+---
+/* LINKS — the link-in-bio landing page.
+ * This is the single link in the @ghostsubieadventures Instagram bio.
+ * Standalone (no site header/footer): built for fast taps from a phone.
+ * Kept out of search results on purpose. */
+const redcircleUrl = 'https://www.redcircle.com/shows/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
+
+const links = [
+  {
+    label: 'Hear the latest episode',
+    sub: 'Ghost Subie Adventures Podcast',
+    href: redcircleUrl,
+    style: 'rust',
+  },
+  {
+    label: 'Get the free Rig-Ready Checklist',
+    sub: 'Plus Field Notes, weekly',
+    href: '/checklist',
+    style: 'dark',
+  },
+  {
+    label: 'Read From the Ghost',
+    sub: 'Field notes from the driver\u2019s seat',
+    href: '/blog',
+    style: 'outline',
+  },
+  {
+    label: 'Partner with us',
+    sub: 'Take your brand off-road',
+    href: '/partner',
+    style: 'outline',
+  },
+  {
+    label: 'Say howdy',
+    sub: 'Subarus, trails, camp, gear',
+    href: '/contact',
+    style: 'outline',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f6f1e5" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>Links | Ghost Subie Adventures</title>
+    <meta
+      name="description"
+      content="Everything from @ghostsubieadventures in one place — the podcast, the free Rig-Ready Checklist, Field Notes, and how to say howdy."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="links-page">
+      <img
+        src="/images/logo.png"
+        alt="Ghost Subie Adventures logo"
+        class="links-logo"
+        width="120"
+        height="70"
+      />
+      <h1>Ghost Subie Adventures</h1>
+      <p class="tagline">Preparedness Without Panic &middot; San Antonio, Texas</p>
+
+      <nav class="links-stack" aria-label="Quick links">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class={`links-btn links-${l.style}`}
+            target={l.href.startsWith('http') ? '_blank' : undefined}
+            rel={l.href.startsWith('http') ? 'noopener' : undefined}
+          >
+            <span class="links-btn-label">{l.label} &rarr;</span>
+            <span class="links-btn-sub">{l.sub}</span>
+          </a>
+        ))}
+      </nav>
+
+      <p class="links-social">
+        <a href="https://www.instagram.com/ghostsubieadventures" target="_blank" rel="noopener"
+          >Instagram</a
+        >
+        &middot;
+        <a href="https://www.tiktok.com/@ghostsubietx" target="_blank" rel="noopener">TikTok</a>
+        &middot;
+        <a href="/">ghostsubie.com</a>
+      </p>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    --cream: #f6f1e5;
+    --paper: #fffdf7;
+    --ink: #1e1a14;
+    --muted: #6f6553;
+    --rust: #c2511f;
+    --rust-dark: #9c3e13;
+    --line: #ded2b8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .links-page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    text-align: center;
+  }
+  .links-logo { margin: 0 auto 1.2rem; height: 70px; width: auto; }
+  h1 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+  .tagline { color: var(--muted); font-size: 0.95rem; margin: 0 0 2.2rem; }
+  .links-stack { display: grid; gap: 0.9rem; }
+  .links-btn {
+    display: block;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 1.05rem 1.4rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .links-btn:hover { transform: translateY(-2px); }
+  .links-btn-label { display: block; font-weight: 700; font-size: 1.08rem; }
+  .links-btn-sub { display: block; font-size: 0.88rem; font-weight: 500; opacity: 0.75; margin-top: 0.15rem; }
+  .links-rust { background: var(--rust); color: #fff; }
+  .links-rust:hover { background: var(--rust-dark); }
+  .links-dark { background: var(--ink); color: var(--paper); }
+  .links-dark:hover { background: #000; }
+  .links-outline {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .links-outline:hover { border-color: var(--ink); }
+  .links-social { margin: 2.4rem 0 0; font-size: 0.92rem; color: var(--muted); }
+  .links-social a { color: var(--rust); font-weight: 600; text-decoration: none; }
+  .links-social a:hover { text-decoration: underline; }
+</style>

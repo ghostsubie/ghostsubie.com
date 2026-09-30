@@ -6,8 +6,9 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
-const { title, description, image = '/images/hero-daylight.jpg' } = Astro.props;
+const { title, description, image = '/images/hero-daylight.jpg', noindex = false } = Astro.props;
 const pageTitle = title === 'Home' ? 'Ghost Subie Adventures | Preparedness Without Panic' : `${title} | Ghost Subie Adventures`;
 ---
 
@@ -25,6 +26,7 @@ const pageTitle = title === 'Home' ? 'Ghost Subie Adventures | Preparedness With
     <meta property="og:description" content={description ?? 'Preparedness without panic.'} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={image} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
