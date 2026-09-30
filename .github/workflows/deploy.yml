@@ -14,10 +14,9 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: site/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install and build
-        working-directory: site
         run: |
           npm ci
           npm run build
@@ -27,5 +26,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: site
           command: pages deploy dist --project-name=ghostsubie-com
