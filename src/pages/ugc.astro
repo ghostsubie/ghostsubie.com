@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/* UGC PORTFOLIO — the page Roman sends to brands.
+ * Kept out of the main nav on purpose: this is a sales asset, linked from pitches. */
+
+const email = 'mailto:hello@ghostsubie.com?subject=' + encodeURIComponent('UGC inquiry — Ghost Subie Adventures');
+
+const stats = [
+  { value: '1,180+', label: 'Instagram followers' },
+  { value: '~27K', label: 'Content views every 28 days' },
+  { value: '85%', label: 'US-based audience, 25–44 core' },
+  { value: '134', label: 'Podcast listens per week' },
+];
+
+const deliverables = [
+  {
+    title: 'Short-form UGC reels',
+    blurb: '9–13 second product-in-use spots filmed at real camp — the format my audience actually watches.',
+  },
+  {
+    title: 'Product lifestyle photography',
+    blurb: 'Rig, campsite, and trail stills. Gear in context, not on a white background.',
+  },
+  {
+    title: 'Unboxing + first looks',
+    blurb: 'Genuine first reactions from someone who will actually use the thing.',
+  },
+  {
+    title: 'Long-form gear reviews',
+    blurb: 'YouTube deep dives and written reviews on ghostsubie.com — rated on the 👻 scale.',
+  },
+  {
+    title: 'Podcast feature segments',
+    blurb: 'Your product in front of the Ghost Subie Adventures Podcast audience.',
+  },
+  {
+    title: 'Event coverage',
+    blurb: 'On-the-ground content from expos and shows — I\u2019m there with the rig, not watching from a desk.',
+  },
+];
+
+const works = [
+  {
+    title: 'RalliTEK lift install',
+    metric: '227 likes · 21 comments',
+    blurb: 'The top-performing brand post on the account — a lift kit install that reads like a story, not an ad.',
+    href: 'https://www.instagram.com/p/DH9lWX8M0rZ/',
+  },
+  {
+    title: 'Overland Expo × Subaru Base Camp',
+    metric: '173 likes · 18 comments',
+    blurb: 'Event coverage with real brand integration — an invited camp setup, not a press pass.',
+    href: 'https://www.instagram.com/p/DZD32fzgDI9/',
+  },
+  {
+    title: '\u201CI have an Idea\u201D',
+    metric: '361 likes — top post on the account',
+    blurb: 'Native, funny, shareable. This is the kind of reach brands rent.',
+    href: 'https://www.instagram.com/p/DI1Vd8RsV4R/',
+  },
+  {
+    title: 'Boo\u2019s intro post',
+    metric: '46 likes · 19 comments',
+    blurb: 'The audience loves the dog. The pet angle converts — just read the comments.',
+    href: 'https://www.instagram.com/p/DYPfnm2gLX0/',
+  },
+  {
+    title: 'Tail of the Dragon run',
+    metric: '79 likes · 3-part series',
+    blurb: 'A fully loaded overland rig through 318 switchbacks. Adventure content with a plot.',
+    href: 'https://www.instagram.com/p/DW-GAkyAPRB/',
+  },
+  {
+    title: 'Subaru loyalty badges',
+    metric: '88 likes · 48 comments',
+    blurb: 'Debate bait done right — the most-commented post on the account.',
+    href: 'https://www.instagram.com/p/DMq_iHUs_w-/',
+  },
+];
+
+const brands = [
+  { name: 'Wheels & Feels USA', note: '7-part collaboration series' },
+  { name: 'Subaru / Subaru Base Camp', note: 'Invited camp setup at Overland Expo' },
+  { name: 'Subie & YOU! podcast', note: 'Guest — Episode 214' },
+  { name: 'OvertrailStories', note: 'Featured — Issue No. 1' },
+  { name: 'RECOIL Magazine', note: 'Feature in talks' },
+  { name: 'OutIn', note: 'Nano 2 UGC collaboration in talks' },
+];
+
+const packages = [
+  {
+    name: 'Sponsored reel',
+    price: '$250',
+    blurb: '9–30s vertical, posted to @ghostsubieadventures. SEO caption, brand tagged, shared to stories.',
+  },
+  {
+    name: 'UGC video — files only',
+    price: '$200',
+    blurb: '15–30s vertical, edited with captions. Delivered for your channels; raw files on request.',
+  },
+  {
+    name: 'Raw clip pack',
+    price: '$125',
+    blurb: '10+ unedited vertical clips straight from the field. Your team does the edit.',
+  },
+  {
+    name: 'Story set',
+    price: '$75',
+    blurb: '3 story frames on @ghostsubieadventures, brand tagged.',
+  },
+  {
+    name: 'Photo set',
+    price: '$100',
+    blurb: '5 edited stills — for feed, blog, or ad creative.',
+  },
+];
+
+const events = [
+  { name: 'Subiefest Midwest', detail: 'Joliet, IL — Oct 10, 2026 · Registered, Best Off-Road entry' },
+  { name: 'Beyond City Limits', detail: 'San Antonio, TX — Oct 18, 2026 · Family car show' },
+  { name: 'Mountain Readiness Fallout', detail: 'Harmony, NC — Oct 23–25, 2026' },
+  { name: 'Subiefest Texas', detail: 'Ennis, TX — Dec 12, 2026' },
+  { name: 'Mountain Readiness Lonestar', detail: 'Grapeland, TX — Mar 2027 · Confirmed presenter' },
+];
+---
+
+<BaseLayout
+  title="UGC Portfolio"
+  description="Ghost Subie Adventures UGC portfolio — real-world product content from a daily-driven overland Forester. Reels, photography, reviews, and event coverage for outdoor and preparedness brands."
+>
+  <div class="wrap">
+    <div class="page-hero">
+      <span class="eyebrow">UGC Portfolio</span>
+      <h1>Real gear. Real family. Real miles.</h1>
+      <p class="lead">
+        I&rsquo;m Roman — San Antonio dad and the creator behind
+        <strong>@ghostsubieadventures</strong>. I run a daily-driven white Subaru Forester
+        (&ldquo;the Ghost&rdquo;) as our family&rsquo;s weekend overland and camp rig, built around
+        one theme: <strong>Preparedness Without Panic</strong> — real family camping, real
+        campfires, zero fluff. Every piece of content stars my real life: my wife, our son
+        Jonah, and Boo, our blue heeler.
+      </p>
+      <p class="hero-cta-row">
+        <a href={email} class="btn btn-rust">Start a project &rarr;</a>
+        <a href="#packages" class="rust-link">See packages &amp; starting rates &rarr;</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="band-black ugc-band">
+    <img
+      src="/images/hero-night-fire.jpg"
+      alt="The Ghost glowing beside a campfire at night"
+      class="ugc-band-photo"
+      loading="lazy"
+    />
+  </div>
+
+  <section class="band-black stats-band">
+    <div class="wrap stats-grid">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="section-tight">
+      <span class="eyebrow">What I make</span>
+      <h2>Content built for the feed, not the shelf.</h2>
+      <div class="grid-3">
+        {deliverables.map((d) => (
+          <div class="card">
+            <div class="card-body">
+              <h3>{d.title}</h3>
+              <p>{d.blurb}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <span class="eyebrow">Top work</span>
+      <h2>Proof, not promises.</h2>
+      <p class="lead section-lead">
+        Real posts, real numbers. Tap through — they&rsquo;re all live on Instagram.
+      </p>
+      <div class="grid-3">
+        {works.map((w) => (
+          <a href={w.href} class="card work-card" target="_blank" rel="noopener">
+            <div class="card-body">
+              <span class="card-meta">{w.metric}</span>
+              <h3>{w.title}</h3>
+              <p>{w.blurb}</p>
+              <span class="card-link">View the post &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <span class="eyebrow">Track record</span>
+      <h2>Brands I&rsquo;ve worked with.</h2>
+      <ul class="brand-list">
+        {brands.map((b) => (
+          <li>
+            <strong>{b.name}</strong>
+            <span>{b.note}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section-tight" id="packages">
+      <span class="eyebrow">Packages</span>
+      <h2>Starting rates.</h2>
+      <p class="lead section-lead">
+        Every package includes one revision round and a 7-day turnaround from shoot day.
+        90-day organic repost on your channels is included — paid usage and whitelisting
+        are quoted per campaign.
+      </p>
+      <div class="grid-3">
+        {packages.map((p) => (
+          <div class="card price-card">
+            <div class="card-body">
+              <span class="card-meta">From {p.price}</span>
+              <h3>{p.name}</h3>
+              <p>{p.blurb}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="card retainer-card">
+        <div class="card-body">
+          <span class="card-meta">Retainer</span>
+          <h3>4 UGC videos a month — $700/mo</h3>
+          <p>
+            A standing slot in the content calendar. 90-day organic usage included, paid
+            usage billed per campaign, 30-day out with written notice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight events-section">
+      <div class="split">
+        <div>
+          <span class="eyebrow">On the ground</span>
+          <h2>Find the Ghost in person.</h2>
+          <p class="lead">
+            Event coverage means exactly that — I&rsquo;m there with the rig, shooting
+            where your customers actually are.
+          </p>
+          <ul class="event-list">
+            {events.map((e) => (
+              <li>
+                <strong>{e.name}</strong>
+                <span>{e.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img
+          src="/images/event-setup.jpg"
+          alt="The Ghost set up at an outdoor event"
+          class="framed"
+          loading="lazy"
+        />
+      </div>
+    </section>
+  </div>
+
+  <section class="section band-olive center">
+    <div class="wrap narrow">
+      <span class="eyebrow">Let&rsquo;s work</span>
+      <h2>Let&rsquo;s make something worth watching.</h2>
+      <p class="lead">
+        Tell me about the product and the story you want told — I&rsquo;ll tell you honestly
+        if it&rsquo;s a fit for the Ghost.
+      </p>
+      <p><a href={email} class="btn btn-rust">hello@ghostsubie.com &rarr;</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-cta-row { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; margin-top: 2rem; }
+  .ugc-band { display: flex; justify-content: center; padding: 0; }
+  .ugc-band-photo { width: 100%; max-height: 520px; object-fit: cover; }
+  .stats-band { padding: 3rem 0; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  @media (max-width: 860px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: #fffdf7;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label { color: rgba(246, 241, 229, 0.75); font-size: 0.95rem; }
+  .section-lead { color: var(--muted); margin-bottom: 2rem; max-width: 60ch; }
+  .work-card { text-decoration: none; }
+  .work-card:hover { border-color: var(--rust); }
+  .work-card:hover h3 { color: var(--rust); }
+  .brand-list, .event-list { list-style: none; margin: 1.6rem 0 0; padding: 0; }
+  .brand-list li, .event-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-list li strong, .event-list li strong { font-size: 1.08rem; }
+  .brand-list li span, .event-list li span { color: var(--muted); font-size: 0.97rem; }
+  .price-card .card-meta { font-size: 1rem; }
+  .retainer-card { margin-top: 1.6rem; border-color: var(--rust); }
+  .events-section img { width: 100%; }
+  .narrow { max-width: 46rem; }
+</style>
