@@ -3,9 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 /*
  * Rig-Ready Checklist signup.
- * Roman is setting up Kit (ConvertKit) himself. When the Kit form embed
- * code is ready, paste it inside the KIT_FORM_EMBED block below,
- * replacing the mailto button.
+ * Kit (ConvertKit) form embed is live below — the incentive email sends
+ * the checklist PDF at https://ghostsubie.com/rig-ready-checklist.pdf.
  */
 
 const inside = [
@@ -14,10 +13,6 @@ const inside = [
   'Emergency if-then prompts',
   'A practical $50 starter kit',
 ];
-
-const mailto =
-  'mailto:ghostsubieadventures@gmail.com?subject=' +
-  encodeURIComponent('Send me the Rig-Ready Checklist');
 ---
 
 <BaseLayout
@@ -45,10 +40,15 @@ const mailto =
         ))}
       </ul>
 
-      <!-- KIT_FORM_EMBED: paste the Kit/ConvertKit form embed code here (replaces the mailto button below). -->
-      <p class="kit-mailto">
-        <a href={mailto} class="btn btn-dark btn-full">Ask for the checklist &rarr;</a>
-      </p>
+      <!-- Kit newsletter form: incentive email delivers the checklist PDF. -->
+      <div class="kit-form">
+        <script
+          is:inline
+          async
+          data-uid="9cbc9b7c04"
+          src="https://ghost-subie-adventures.kit.com/9cbc9b7c04/index.js"
+        ></script>
+      </div>
 
       <p class="fine-print">
         Free forever. One email a week after that. Unsubscribe anytime.
@@ -105,7 +105,8 @@ const mailto =
     text-align: center;
     padding: 1.15rem 1.9rem;
   }
-  .kit-mailto { margin: 0 0 1.2rem; }
+  .kit-form { margin: 0 0 1.2rem; }
+  .kit-form .formkit-form { margin: 0; }
   .fine-print { color: var(--muted); font-size: 0.92rem; margin: 0; }
 
   @media (max-width: 860px) {

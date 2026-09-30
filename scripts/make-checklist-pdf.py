@@ -78,8 +78,8 @@ SECTIONS = [
             "Budget 12V tire compressor (~$25) — pairs with the plug kit",
             "Basic first-aid kit (~$10) — blisters, burns, bandages",
             "Headlamp (~$8) — because the sun sets mid-task, every time",
-            "All of it available at any auto parts or big-box store. Prices vary, capability doesn't.",
         ],
+        "All of it available at any auto parts or big-box store. Prices vary, capability doesn't.",
     ),
 ]
 
@@ -91,7 +91,7 @@ class ChecklistPDF(FPDF):
         self.set_text_color(*MUTED)
         self.cell(
             0, 10,
-            f"ghostsubie.com  ·  The Rig-Ready Checklist  ·  p. {self.page_no()}/{{nb}}",
+            f"www.ghostsubie.com  ·  The Rig-Ready Checklist  ·  p. {self.page_no()}/{{nb}}",
             align="C",
         )
 
@@ -142,6 +142,15 @@ pdf.rect(0, 0, 216, band_h, "F")
 # amber rule under band
 pdf.set_fill_color(*AMBER)
 pdf.rect(0, band_h, 216, 2, "F")
+# logo, right side of band (amber to match title)
+LOGO_PATH = "/home/hatch/workspace/goals/ghost-subie-adventures-website-rebuild/site/public/images/logo-amber.png"
+SIG_PATH = "/home/hatch/workspace/goals/ghost-subie-adventures-website-rebuild/site/public/images/signature.png"
+pdf.set_font("DejaVu", "B", 26)
+title_w = pdf.get_string_width("THE RIG-READY CHECKLIST")
+logo_w = 30
+logo_h = logo_w * 704 / 1202
+logo_x = max(18 + title_w + 10, 216 - 18 - logo_w)
+pdf.image(LOGO_PATH, x=logo_x, y=(band_h - logo_h) / 2, w=logo_w)
 
 pdf.set_xy(18, 10)
 pdf.set_font("DejaVu", "B", 26)
@@ -168,10 +177,18 @@ pdf.set_text_color(*MUTED)
 pdf.multi_cell(0, 5.8, intro)
 pdf.ln(4)
 
-for title, items in SECTIONS:
+for section in SECTIONS:
+    title, items = section[0], section[1]
+    note = section[2] if len(section) > 2 else None
     pdf.section_title(title)
     for i, item in enumerate(items):
         pdf.check_item(item, last=(i == len(items) - 1))
+    if note:
+        # plain note, not a checkbox item
+        pdf.set_font("DejaVu", "I", 10)
+        pdf.set_text_color(*MUTED)
+        pdf.set_x(pdf.l_margin + 8)
+        pdf.multi_cell(pdf.w - pdf.l_margin - pdf.r_margin - 8, 5.6, note)
     pdf.ln(3)
 
 # ---- Sign-off ----
@@ -180,16 +197,17 @@ pdf.set_draw_color(*RULE)
 pdf.set_line_width(0.6)
 pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
 pdf.ln(4)
-pdf.set_font("DejaVu", "I", 11)
-pdf.set_text_color(*INK)
-pdf.multi_cell(
-    0, 6.2,
-    "Capability isn't bought — it's built, one checklist at a time. See you out there.\n— Roman",
-)
-pdf.ln(2)
 pdf.set_font("DejaVu", "", 9.5)
 pdf.set_text_color(*MUTED)
-pdf.cell(0, 6, "ghostsubie.com  ·  hello@ghostsubie.com")
+pdf.cell(0, 6, "www.ghostsubie.com   ·   IG: @ghostsubieadventures", new_x="LMARGIN", new_y="NEXT")
+pdf.ln(3)
+pdf.set_font("DejaVu", "I", 11)
+pdf.set_text_color(*INK)
+pdf.cell(0, 6.2, "Preparedness without panic \u2014 one checklist at a time.", new_x="LMARGIN", new_y="NEXT")
+pdf.ln(6)
+pdf.cell(0, 6.2, "See you out there,", new_x="LMARGIN", new_y="NEXT")
+pdf.ln(3)
+pdf.image(SIG_PATH, x=pdf.l_margin, w=48)
 
 out = "/home/hatch/workspace/goals/ghost-subie-adventures-website-rebuild/site/public/rig-ready-checklist.pdf"
 pdf.output(out)

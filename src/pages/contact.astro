@@ -59,6 +59,22 @@ const mailto = (subject: string) =>
         ))}
       </div>
     </section>
+
+    <section class="section-tight newsletter-cta">
+      <h2>Want the Rig-Ready Checklist?</h2>
+      <p class="lead">
+        Join the list and we&rsquo;ll send the exact pre-trip scan we run before family camp &mdash;
+        plus one email a week. Free forever, unsubscribe anytime.
+      </p>
+      <div class="kit-form">
+        <script
+          is:inline
+          async
+          data-uid="9cbc9b7c04"
+          src="https://ghost-subie-adventures.kit.com/9cbc9b7c04/index.js"
+        ></script>
+      </div>
+    </section>
   </div>
 </BaseLayout>
 
@@ -69,4 +85,6 @@ const mailto = (subject: string) =>
   .lane-card { text-decoration: none; }
   .lane-card h3 { margin: 0; }
   .lane-card .card-link, .lane-card p:last-child { color: var(--amber); font-weight: 600; }
+  .newsletter-cta .lead { max-width: 60ch; }
+  .newsletter-cta .kit-form { margin-top: 1.6rem; max-width: 560px; }
 </style>
