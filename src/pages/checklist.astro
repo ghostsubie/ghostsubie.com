@@ -2,65 +2,115 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 /*
- * Campfire-list / checklist signup.
+ * Rig-Ready Checklist signup.
  * Roman is setting up Kit (ConvertKit) himself. When the Kit form embed
  * code is ready, paste it inside the KIT_FORM_EMBED block below,
- * replacing the placeholder div.
+ * replacing the mailto button.
  */
 
 const inside = [
-  'Six prep sections: vehicle, camp systems, and personal readiness',
-  'The 60-second trailhead scan we run before every departure',
-  'Emergency if-thens: the decisions made before you need them',
-  'The $50 starter kit that covers the most common trailhead problems',
+  'Six preparation sections',
+  'A 60-second trailhead scan',
+  'Emergency if-then prompts',
+  'A practical $50 starter kit',
 ];
+
+const mailto =
+  'mailto:ghostsubieadventures@gmail.com?subject=' +
+  encodeURIComponent('Send me the Rig-Ready Checklist');
 ---
 
 <BaseLayout
   title="Free Rig-Ready Checklist"
-  description="The Rig-Ready Checklist — the exact pre-trip checklist we run before every family camp. Free forever."
+  description="The Rig-Ready Checklist — the exact pre-trip scan we run before family camp. Free field guide from Ghost Subie Adventures."
 >
-  <div class="wrap">
-    <div class="split checklist-hero">
-      <div>
-        <span class="eyebrow">Free Download</span>
-        <h1>Don&rsquo;t hit the trail unprepared.</h1>
-        <p class="lead">
-          The Rig-Ready Checklist &mdash; the exact pre-trip checklist we run before every
-          family camp. Print it, laminate it, keep it in the glovebox.
-        </p>
-        <ul class="checklist-preview">
-          {inside.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </div>
-      <div class="checklist-form-card">
-        <h2>Get the checklist</h2>
-        <p>Drop your email and it&rsquo;s yours &mdash; free forever.</p>
-
-        <!-- KIT_FORM_EMBED: paste the Kit/ConvertKit form embed code here (replaces the placeholder div below). -->
-        <div class="kit-slot" data-kit-slot="checklist">
-          <p><strong>Kit form embed goes here.</strong></p>
-          <p>Paste the Kit form embed code in <code>src/pages/checklist.astro</code> where marked <code>KIT_FORM_EMBED</code>. The form should deliver the Rig-Ready Checklist PDF on signup.</p>
-        </div>
-
-        <p class="fine-print">
-          Free forever. One email a week after that. Unsubscribe anytime.
-        </p>
-      </div>
+  <section class="checklist-split">
+    <div class="checklist-photo">
+      <img
+        src="/images/cargo-drawers.jpg"
+        alt="The Ghost's loaded cargo bay with the wooden drawer system"
+        fetchpriority="high"
+      />
     </div>
-  </div>
+    <div class="checklist-body">
+      <span class="eyebrow">Free field guide</span>
+      <h1>Don&rsquo;t hit the trail unprepared.</h1>
+      <p class="lead">
+        The Rig-Ready Checklist is the exact pre-trip scan we run before family camp: simple
+        enough to use, specific enough to matter.
+      </p>
+      <ul class="dash-list">
+        {inside.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
+      <!-- KIT_FORM_EMBED: paste the Kit/ConvertKit form embed code here (replaces the mailto button below). -->
+      <p class="kit-mailto">
+        <a href={mailto} class="btn btn-dark btn-full">Ask for the checklist &rarr;</a>
+      </p>
+
+      <p class="fine-print">
+        Free forever. One email a week after that. Unsubscribe anytime.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .checklist-hero { padding: 4rem 0 4.5rem; align-items: start; }
-  .checklist-form-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 2.2rem;
+  .checklist-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
   }
-  .checklist-form-card h2 { margin-bottom: 0.4rem; }
-  .fine-print { color: var(--muted); font-size: 0.9rem; margin: 1.2rem 0 0; }
+  .checklist-photo { min-height: 480px; }
+  .checklist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .checklist-body {
+    padding: clamp(3rem, 6vw, 5.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .checklist-body h1 { margin-bottom: 1.4rem; }
+  .checklist-body .lead { color: var(--muted); margin-bottom: 0.5rem; }
+
+  .dash-list {
+    list-style: none;
+    margin: 1.6rem 0 2.2rem;
+    padding: 0;
+  }
+  .dash-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.08rem;
+    font-weight: 500;
+  }
+  .dash-list li::before {
+    content: '\2014';
+    color: var(--rust);
+    font-weight: 700;
+  }
+
+  .btn-full {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.15rem 1.9rem;
+  }
+  .kit-mailto { margin: 0 0 1.2rem; }
+  .fine-print { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+  @media (max-width: 860px) {
+    .checklist-split { grid-template-columns: 1fr; }
+    .checklist-photo { min-height: 0; }
+    .checklist-photo img { max-height: 380px; }
+  }
 </style>

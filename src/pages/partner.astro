@@ -4,82 +4,103 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const offerings = [
   {
     n: '01',
-    title: 'Expo & Car-Show Display',
-    body: 'Your product in our setup at Overland Expo, Subiefest, and regional shows \u2014 seen, touched, and asked about by people who actually camp.',
+    eyebrow: 'Display',
+    title: 'Expo & car-show display',
+    body: 'Your product integrated into the Ghost\u2019s full setup at overland expos, Subiefest, and regional shows.',
   },
   {
     n: '02',
-    title: 'Podcast Features',
-    body: 'Dedicated segments and full episodes on the Ghost Subie Adventures Podcast \u2014 real conversation, not a scripted ad read.',
+    eyebrow: 'Audio',
+    title: 'Podcast features',
+    body: 'Dedicated segments and full conversations on the Ghost Subie Adventures Podcast.',
   },
   {
     n: '03',
-    title: 'Blog Reviews & Build Series',
-    body: 'Long-form, photo-documented real-world testing on Field Notes. If it survives our family weekends, that means something.',
+    eyebrow: 'Editorial',
+    title: 'Reviews & build series',
+    body: 'Long-form, photo-documented testing with space for context a quick reel can\u2019t hold.',
   },
   {
     n: '04',
-    title: 'Social Content',
-    body: 'Reels, carousels, and stories for an engaged community that actually camps \u2014 shot in the field, not in a studio.',
+    eyebrow: 'Social',
+    title: 'Social content',
+    body: 'Reels, carousels, and stories made for an engaged community that actually camps.',
   },
   {
     n: '05',
-    title: 'Speaking Engagements',
-    body: 'I speak on vehicle preparedness and family overlanding at expos, shows, and club events \u2014 including Mountain Readiness Fallout 2026 and Lonestar 2027.',
+    eyebrow: 'Speaking',
+    title: 'Speaking engagements',
+    body: 'Practical, story-driven talks on vehicle preparedness, family adventure, and building real-world capability without panic.',
   },
   {
     n: '06',
-    title: 'Custom UGC & Content Licensing',
-    body: 'I shoot ready-to-post photos and video of your product in real camp and overland use \u2014 licensed for your own channels.',
+    eyebrow: 'UGC',
+    title: 'Custom UGC & content licensing',
+    body: 'Ready-to-post photos and video of your product in real camp and overland use, licensed for your own channels.',
   },
 ];
+
+const mailto =
+  'mailto:ghostsubieadventures@gmail.com?subject=' +
+  encodeURIComponent('Partnership inquiry');
 ---
 
 <BaseLayout
   title="Partner With Us"
-  description="Partner with Ghost Subie Adventures — expo displays, podcast features, real-world gear testing, speaking, and licensed UGC from a daily-driven family overland rig."
+  description="Partner with Ghost Subie Adventures — take your brand off-road with us. Expo displays, podcast features, real-world testing, speaking, and licensed UGC."
 >
   <div class="wrap">
     <div class="page-hero">
-      <span class="eyebrow">Media Kit</span>
+      <span class="eyebrow">Partner with us</span>
       <h1>Take your brand off-road with us.</h1>
       <p class="lead">
-        Ghost Subie Adventures isn&rsquo;t a garage queen with a ring light &mdash; it&rsquo;s a
-        daily-driven family rig that actually gets used. When we run your gear, it gets rained
-        on, dusted, dog-haired, and kid-tested.
+        The Ghost isn&rsquo;t a garage queen with a ring light. It&rsquo;s a daily-driven family
+        rig that actually gets used. When we run your gear, it gets rained on, dusted,
+        dog-haired, and kid-tested.
       </p>
     </div>
+  </div>
 
-    <section class="section-tight">
-      <span class="eyebrow">What We Offer</span>
+  <img
+    class="partner-bleed"
+    src="/images/event-setup.jpg"
+    alt="Roman leaning on the Ghost with the rooftop tent and awning deployed at an event"
+    loading="lazy"
+  />
+
+  <div class="wrap">
+    <section class="section-tight ways">
+      <span class="eyebrow">Ways to work together</span>
+      <h2 class="ways-head">One product. Many real touchpoints.</h2>
       <div class="grid-3 offerings">
         {offerings.map((o) => (
           <article class="card">
             <div class="card-body">
-              <span class="card-meta">No. {o.n}</span>
+              <span class="card-meta">{o.n} &middot; {o.eyebrow}</span>
               <h3>{o.title}</h3>
               <p>{o.body}</p>
             </div>
           </article>
         ))}
       </div>
-    </section>
-
-    <section class="section band-dark center partner-cta">
-      <div class="wrap">
-        <span class="eyebrow">Let&rsquo;s Talk</span>
-        <h2>Got gear that deserves a real test?</h2>
-        <p class="lead">
-          Tell us what you make and what you&rsquo;re dreaming up &mdash; every note gets a
-          real reply.
-        </p>
-        <p><a href="mailto:hello@ghostsubie.com" class="btn">Start the conversation</a></p>
-      </div>
+      <p class="partner-cta-row"><a href={mailto} class="btn btn-dark">Start the conversation &rarr;</a></p>
     </section>
   </div>
 </BaseLayout>
 
 <style>
-  .offerings { margin-top: 1.8rem; }
-  .partner-cta { margin: 3rem 0 4.5rem; border-radius: var(--radius); }
+  .partner-bleed {
+    width: 100%;
+    max-height: 640px;
+    object-fit: cover;
+    display: block;
+  }
+  .ways { padding-bottom: 4.5rem; }
+  .ways-head {
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+    max-width: 16ch;
+    margin-bottom: 2.4rem;
+  }
+  .offerings { margin-top: 0.5rem; }
+  .partner-cta-row { margin: 2.4rem 0 0; }
 </style>

@@ -1,206 +1,246 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SignupBand from '../components/SignupBand.astro';
-import { getCollection } from 'astro:content';
-
-const posts = (await getCollection('field-notes')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const featured = posts.find((p) => p.data.featured) ?? posts[0];
-const others = posts.filter((p) => p !== featured).slice(0, 2);
-const homeCards = [featured, ...others];
 
 const episodes = [
   {
+    eyebrow: 'Season return',
     title: 'The Comeback: Why the Podcast Is Back',
-    blurb: 'The story behind the relaunch and what\u2019s coming this season.',
+    blurb: 'The story behind the relaunch \u2014 and the conversations waiting down the road.',
+    foot: 'From the campfire, driveway & trail.',
   },
   {
-    title: 'I Stole My Content Strategy From My Email Inbox',
-    blurb: 'The exact system behind the new season \u2014 plus how you can steal it too.',
+    eyebrow: 'Subaru community',
+    title: 'Subaru Basecamp',
+    blurb: 'The people, stories, and shared adventure that make Basecamp feel bigger than a weekend event.',
+    foot: 'Community starts here.',
   },
   {
+    eyebrow: 'Preparedness',
+    title: 'Preparedness at the Movies',
+    blurb: 'What survival stories get right, what they get wrong, and what families can take into real life.',
+    foot: 'Movies meet real-world readiness.',
+  },
+  {
+    eyebrow: 'Rig system',
     title: 'Why I Love My Wheels & Feels Drawer System',
-    blurb: 'The trunk upgrade that turned camp setup from chaos into a two-minute job.',
+    blurb: 'How organized, easy-to-reach storage makes the Ghost work better on everyday drives and camp weekends.',
+    foot: 'A place for everything.',
+  },
+];
+
+const noteCards = [
+  {
+    eyebrow: 'Rig build',
+    title: 'Why I Love My Wheels & Feels Drawer System',
+    blurb: 'The real-world layout, access, and organization choices that keep the Ghost ready for errands, emergencies, and camp.',
+    image: '/images/field-drawer.jpg',
+    alt: 'The Ghost\u2019s sticker-covered Wheels & Feels drawer system',
+    href: '/field-notes/why-i-love-my-wheels-and-feels-drawer-system',
+  },
+  {
+    eyebrow: 'Preparedness',
+    title: 'What \u201cPreparedness Without Panic\u201d actually means',
+    blurb: 'Practical readiness for ordinary families \u2014 without fear, theater, or a bunker mentality.',
+    linkText: 'Read the philosophy \u2192',
+    image: '/images/field-gobag.jpg',
+    alt: 'A brown leather go-bag with a water bottle and thermos',
+    href: '/field-notes/what-preparedness-without-panic-actually-means',
+  },
+  {
+    eyebrow: 'Family camp',
+    title: '10 things I pack every time \u2014 and 3 I stopped packing',
+    blurb: 'The loadout gets better when every trip teaches you what earns the space.',
+    linkText: 'Pack with purpose \u2192',
+    image: '/images/field-gear-flatlay.jpg',
+    alt: 'Camp gear laid out: boots, flashlight, tools, and keys',
+    href: '/field-notes/10-things-i-pack-for-every-family-camp',
   },
 ];
 ---
 
 <BaseLayout
   title="Home"
-  description="Ghost Subie Adventures — Preparedness Without Panic. A daily-driven Subaru Forester, real family camping, and the podcast from the campfire."
+  description="Ghost Subie Adventures — the daily driver that disappears into the wild on weekends. Family overlanding and preparedness without panic, from San Antonio, Texas."
 >
   <!-- HERO -->
   <section class="hero">
     <img
-      class="hero-bg"
-      src="/images/hero-night-fire.jpg"
-      alt="The Ghost, a white Subaru Forester with a rooftop tent, parked beside a glowing campfire at night"
+      class="hero-img"
+      src="/images/hero-daylight.jpg"
+      alt="The white Ghost Subaru Forester driving a winding mountain road"
       fetchpriority="high"
     />
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="wrap hero-content">
-      <span class="eyebrow">Preparedness Without Panic</span>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Preparedness without panic</span>
       <h1>The daily driver that disappears into the wild on weekends.</h1>
       <p class="hero-sub">
         I&rsquo;m Roman &mdash; San Antonio dad, Subaru overlander, and host of the Ghost Subie
         Adventures Podcast. The Ghost is our white Forester: school drop-offs on weekdays,
-        off-grid family camp on weekends with my wife, my kid, and our friends. No trailer
-        queen, no fluff &mdash; just a real rig living a real life.
+        off-grid family camp on weekends, and a practical platform for preparing our family
+        for worst-case scenarios without panic.
       </p>
       <div class="hero-cta">
-        <a href="/checklist" class="btn">Get Rig Ready</a>
-        <a href="/podcast" class="quiet-link">Prefer to listen first?</a>
+        <a href="/checklist" class="btn btn-light">Get Rig Ready &rarr;</a>
+        <a href="/podcast" class="rust-link">Prefer to listen first? Hear the podcast &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- LATEST EPISODES -->
+  <!-- PODCAST / COMING UP -->
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <div>
           <span class="eyebrow">The Podcast</span>
-          <h2>Latest episodes</h2>
+          <h2>Coming up this season</h2>
+          <p class="section-sub">Stories built for the drive.</p>
         </div>
-        <a href="/podcast" class="card-link">All episodes &rarr;</a>
+        <a href="/podcast" class="card-link">Explore the podcast &rarr;</a>
       </div>
-      <div class="grid-3">
+      <div class="grid-4">
         {episodes.map((ep) => (
           <article class="card">
             <div class="card-body">
-              <span class="card-meta">Episode</span>
+              <span class="card-meta">{ep.eyebrow}</span>
               <h3>{ep.title}</h3>
               <p>{ep.blurb}</p>
-              <a href="/podcast" class="card-link">Listen &rarr;</a>
+              <p class="card-foot">{ep.foot}</p>
             </div>
           </article>
         ))}
-      </div>
-      <div class="embed-shell home-embed">
-        <iframe
-          src="https://embed.podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799"
-          height="450"
-          title="Ghost Subie Adventures on Apple Podcasts"
-          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-          loading="lazy"
-        ></iframe>
       </div>
     </div>
   </section>
 
   <!-- FIELD NOTES -->
-  <section class="section band-dark">
+  <section class="section notes-section">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <span class="eyebrow">From the Driver&rsquo;s Seat</span>
-          <h2>Field Notes</h2>
+          <h2>Fresh from the field notes</h2>
+          <p class="section-sub">What the miles teach us.</p>
         </div>
-        <a href="/field-notes" class="card-link">Read them all &rarr;</a>
+        <a href="/field-notes" class="card-link">Read Field Notes &rarr;</a>
       </div>
       <div class="grid-3">
-        {homeCards.map((post) => (
-          <article class="card">
-            {post.data.image && (
-              <a href={`/field-notes/${post.id}`} aria-label={post.data.title}>
-                <img class="card-img" src={post.data.image} alt={post.data.title} loading="lazy" />
-              </a>
-            )}
-            <div class="card-body">
-              <span class="card-meta">
-                {post.data.featured ? 'Featured \u00b7 ' : ''}{post.data.category}
-              </span>
-              <h3><a href={`/field-notes/${post.id}`}>{post.data.title}</a></h3>
-              <p>{post.data.description}</p>
-              <a href={`/field-notes/${post.id}`} class="card-link">Read the note &rarr;</a>
+        {noteCards.map((note) => (
+          <a href={note.href} class="overlay-card" aria-label={note.title}>
+            <img src={note.image} alt={note.alt} loading="lazy" />
+            <div class="overlay-body">
+              <span class="eyebrow">{note.eyebrow}</span>
+              <h3>{note.title}</h3>
+              <p>{note.blurb}</p>
+              <span class="card-link">{note.linkText ?? 'Read the note \u2192'}</span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
   <!-- STORY SPLIT -->
-  <section class="section">
-    <div class="wrap split">
+  <section class="story-split band-olive">
+    <div class="story-img">
       <img
-        class="framed"
-        src="/images/family-selfie.jpg"
-        alt="Roman with his wife Michelle and their son Jonah on a family camp night"
+        src="/images/story-campfire.jpg"
+        alt="Jonah roasting a marshmallow over a campsite fire"
         loading="lazy"
-        style="aspect-ratio: 4 / 3; object-position: 20% 80%;"
       />
-      <div>
-        <span class="eyebrow">Our Story, Short</span>
-        <h2>It started with a Bluey car.</h2>
-        <p class="lead">
-          At our first Subiefest, my then-7-year-old spotted a Bluey-themed Subaru across the
-          lot &mdash; and fell in love with the whole idea of it. Now the Ghost, our white
-          Forester, is a daily driver by week and a family basecamp by weekend &mdash; and
-          everything we learn out there comes back here.
-        </p>
-        <a href="/about" class="btn btn-outline">Read our story</a>
-      </div>
+    </div>
+    <div class="story-body">
+      <span class="eyebrow">Our story</span>
+      <h2>Preparedness isn&rsquo;t paranoia. It&rsquo;s freedom.</h2>
+      <p class="lead">
+        The Ghost is a daily driver, a rolling classroom, and an adventure rig &mdash; proof
+        that real-world readiness can be practical, family-centered, and fun.
+      </p>
+      <p><a href="/about" class="btn btn-light">Read the full story &rarr;</a></p>
     </div>
   </section>
 
   <!-- PARTNER BAND -->
-  <section class="section band-dark center">
-    <div class="wrap">
-      <span class="eyebrow">Partner With Us</span>
+  <section class="section band-black center">
+    <div class="wrap narrow">
+      <span class="eyebrow">Field-tested partnerships</span>
       <h2>Take your brand off-road with us.</h2>
       <p class="lead">
-        We display and demo partner gear at expos and car shows, feature it on the podcast,
-        and put it through real family-camp testing on the blog.
+        Partner gear gets displayed at real events, featured in real stories, and tested
+        through real family-camp miles.
       </p>
-      <p><a href="/partner" class="btn">Work with us</a></p>
+      <p><a href="/partner" class="btn btn-rust">Become a partner &rarr;</a></p>
     </div>
   </section>
-
-  <SignupBand />
 </BaseLayout>
 
 <style>
+  /* HERO */
   .hero {
     position: relative;
-    min-height: 92vh;
+    min-height: 88vh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
+    color: #fff;
   }
-  .hero-bg {
+  .hero-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 70%;
   }
-  .hero-scrim {
+  .hero-shade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(8, 6, 4, 0.94) 0%, rgba(8, 6, 4, 0.55) 45%, rgba(8, 6, 4, 0.25) 100%);
+    background: linear-gradient(to right, rgba(10, 8, 5, 0.78) 0%, rgba(10, 8, 5, 0.45) 45%, rgba(10, 8, 5, 0.05) 75%);
   }
-  .hero-content {
-    position: relative;
-    padding-bottom: 5.5rem;
-    padding-top: 6rem;
-    max-width: 1140px;
+  .hero-inner { position: relative; z-index: 1; padding-top: 4rem; padding-bottom: 4rem; }
+  .hero .eyebrow { color: var(--rust-soft); }
+  .hero h1 { color: #fff; max-width: 13ch; margin-bottom: 1.4rem; }
+  .hero-sub {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.15rem;
+    max-width: 36rem;
+    margin-bottom: 2rem;
   }
-  .hero-content h1 { max-width: 15ch; margin-bottom: 0.6rem; }
-  .hero-sub { max-width: 38rem; color: #d8cdb6; font-size: 1.12rem; }
-  .hero-cta { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .hero-cta { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
+  .hero-cta .rust-link { color: var(--rust-soft); }
+  .hero-cta .rust-link:hover { color: #f0b183; }
 
+  /* SECTION HEADS */
   .section-head {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 2.2rem;
     flex-wrap: wrap;
   }
   .section-head h2 { margin: 0; }
-  .home-embed { margin-top: 2rem; }
+  .section-sub { color: var(--muted); margin: 0.5rem 0 0; font-size: 1.1rem; }
+  .card-foot { color: var(--muted); font-size: 0.92rem; font-style: italic; }
+
+  .notes-section { padding-top: 1rem; }
+
+  /* STORY SPLIT */
+  .story-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  @media (max-width: 860px) { .story-split { grid-template-columns: 1fr; } }
+  .story-img img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+  .story-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.5rem, 6vw, 5.5rem);
+  }
+  .story-body .eyebrow { color: var(--rust-soft); }
+  .story-body h2 { margin-bottom: 1.2rem; }
+  .story-body .lead { margin-bottom: 2rem; }
+
+  .narrow { max-width: 46rem; }
+  .band-black .btn-light { margin-top: 1rem; }
 </style>

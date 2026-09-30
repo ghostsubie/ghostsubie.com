@@ -2,24 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const showUrl = 'https://podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799';
-const spotifyUrl = 'https://open.spotify.com/show/6XFwFvyItphkQbYsdminAI';
-const rssUrl = 'https://feeds.redcircle.com/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
 const redcircleUrl = 'https://www.redcircle.com/shows/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
-const coverArt =
-  'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/6b/81/20/6b81201a-31f3-0a72-c93e-da030d1f2075/mza_9498050084739853986.jpg/600x600bb.jpg';
 
-const lineup = [
+const comingUp = [
   {
     title: 'Subaru Basecamp',
-    blurb: 'Stories and lessons from Subaru Base Camp \u2014 community, capability, and the culture that keeps us coming back.',
+    blurb: 'The people, stories, and shared adventure behind the Basecamp experience.',
   },
   {
     title: 'Preparedness at the Movies',
-    blurb: 'What Hollywood gets right (and hilariously wrong) about being ready \u2014 and what we can actually steal from the screen.',
+    blurb: 'Breaking down what the screen gets right \u2014 and wrong \u2014 about real readiness.',
   },
   {
     title: 'Why I Love My Wheels & Feels Drawer System',
-    blurb: 'The trunk upgrade that turned camp setup from chaos into a two-minute job.',
+    blurb: 'The organization system that keeps the Ghost ready for daily life and weekends away.',
   },
 ];
 ---
@@ -30,96 +26,99 @@ const lineup = [
 >
   <div class="wrap">
     <div class="page-hero">
-      <span class="eyebrow">The Podcast</span>
-      <h1>Ghost Subie Adventures Podcast</h1>
+      <span class="eyebrow">The podcast</span>
+      <h1>Real talk from a real rig.</h1>
       <p class="lead">
-        Real talk from a real rig. Family overlanding, preparedness without the panic, and
-        conversations with the people building the overland and Subaru community &mdash;
-        recorded from the road, the campfire, and the driveway.
-      </p>
-      <p class="subscribe-row">
-        <a href={spotifyUrl} class="btn btn-outline" target="_blank" rel="noopener">Spotify</a>
-        <a href={showUrl} class="btn btn-outline" target="_blank" rel="noopener">Apple Podcasts</a>
-        <a href={rssUrl} class="btn btn-outline" target="_blank" rel="noopener">RSS</a>
+        Family overlanding, preparedness without the panic, and conversations with the people
+        building the overland and Subaru community &mdash; recorded from the road, the
+        campfire, and the driveway.
       </p>
     </div>
 
-    <div class="embed-shell">
-      <iframe
-        src="https://embed.podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799"
-        height="450"
-        title="Ghost Subie Adventures on Apple Podcasts"
-        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-        loading="lazy"
-      ></iframe>
-    </div>
-
-    <!-- COMEBACK SEASON FEATURE -->
-    <section class="section-tight">
-      <div class="split comeback">
-        <img
-          src={coverArt}
-          alt="Ghost Subie Adventures Podcast cover art"
-          class="framed comeback-art"
+    <!-- LATEST EPISODE -->
+    <section class="section-tight latest">
+      <span class="card-meta">Latest episode &middot; 41 min</span>
+      <h2>Fog is a Mindset</h2>
+      <p class="lead">
+        Navigating uncertainty, protecting situational awareness, and building resilience when
+        visibility disappears.
+      </p>
+      <p class="latest-cta">
+        <a href={showUrl} class="btn btn-dark" target="_blank" rel="noopener">Listen on Apple Podcasts &rarr;</a>
+        <a href={redcircleUrl} class="btn btn-outline" target="_blank" rel="noopener">All episodes &amp; listening apps</a>
+      </p>
+      <div class="embed-shell">
+        <iframe
+          src="https://embed.podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799"
+          height="450"
+          title="Ghost Subie Adventures on Apple Podcasts"
+          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
           loading="lazy"
-        />
-        <div>
-          <span class="eyebrow">Now Playing</span>
-          <h2>The Comeback Season</h2>
-          <p class="lead">
-            The podcast is back with a brand-new season &mdash; ten episodes on the rig, the
-            family, and the preparedness mindset, recorded where it actually happens. New
-            episodes drop weekly.
-          </p>
-          <p>
-            <a href={showUrl} class="btn" target="_blank" rel="noopener">Follow the show</a>
-          </p>
-        </div>
+        ></iframe>
       </div>
     </section>
 
-    <!-- SEASON LINEUP -->
+    <!-- NEW SEASON -->
     <section class="section-tight">
-      <span class="eyebrow">This Season</span>
-      <h2>On the lineup</h2>
-      <div class="grid-3 lineup">
-        {lineup.map((ep) => (
-          <article class="card">
-            <div class="card-body">
-              <span class="card-meta">Episode</span>
-              <h3>{ep.title}</h3>
-              <p>{ep.blurb}</p>
-            </div>
-          </article>
+      <span class="eyebrow">New season</span>
+      <h2>The road ahead.</h2>
+      <article class="card season-card">
+        <div class="card-body">
+          <span class="card-meta">Season return</span>
+          <h3>The Comeback</h3>
+          <p>
+            Why the podcast is back, where it&rsquo;s headed, and why the best stories are the
+            ones that get dirt on them.
+          </p>
+          <a href={showUrl} class="card-link" target="_blank" rel="noopener">Follow the relaunch &rarr;</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- COMING UP -->
+    <section class="section-tight">
+      <h2 class="coming-head">Coming up</h2>
+      <div class="coming-rows">
+        {comingUp.map((ep) => (
+          <div class="coming-row">
+            <span class="card-meta">Coming up</span>
+            <h3>{ep.title}</h3>
+            <p>{ep.blurb}</p>
+          </div>
         ))}
       </div>
-      <p class="redcircle-note">
-        Prefer another app? Find every episode on
-        <a href={redcircleUrl} target="_blank" rel="noopener">RedCircle</a>.
-      </p>
     </section>
 
     <!-- GUEST BAND -->
-    <section class="section band-dark center guest-band">
-      <div class="wrap">
-        <span class="eyebrow">Be a Guest</span>
-        <h2>Got a story worth telling around the campfire?</h2>
-        <p class="lead">
-          We talk with overlanders, builders, and preparedness folks &mdash; real people with
-          real miles behind them.
-        </p>
-        <p><a href="/contact" class="btn">Pitch to be a guest</a></p>
-      </div>
-    </section>
-  </div>
+  </div><!-- /wrap -->
+  <section class="section band-black center guest-band">
+    <div class="wrap narrow">
+      <span class="eyebrow">Have a story?</span>
+      <h2>Pull up a chair.</h2>
+      <p class="lead">
+        We talk with overlanders, builders, Subaru people, and practical preparedness voices.
+      </p>
+      <p><a href="/contact" class="btn btn-rust">Pitch a guest &rarr;</a></p>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .subscribe-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.6rem; }
-  .comeback { margin-top: 1rem; }
-  .comeback-art { aspect-ratio: 1 / 1; max-width: 420px; width: 100%; }
-  .lineup { margin-top: 1.8rem; }
-  .redcircle-note { color: var(--muted); margin-top: 1.6rem; }
-  .guest-band { margin: 3rem 0 4.5rem; border-radius: var(--radius); }
+  .latest h2 { margin: 0.6rem 0 0.8rem; }
+  .latest-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.4rem 0 2rem; }
+  .latest .embed-shell { margin-bottom: 1rem; }
+  .season-card { margin-top: 1.6rem; }
+  .coming-head { margin-bottom: 1.4rem; }
+  .coming-rows { display: grid; gap: 1.2rem; margin-bottom: 1rem; }
+  .coming-row {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+  }
+  .coming-row h3 { margin: 0.4rem 0 0.4rem; }
+  .coming-row p { color: var(--muted); margin: 0; }
+  .guest-band { margin: 3rem 0 0; }
+  .guest-band .narrow { max-width: 46rem; }
 </style>

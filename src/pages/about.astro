@@ -1,86 +1,181 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const redcircleUrl = 'https://www.redcircle.com/shows/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
 ---
 
 <BaseLayout
   title="About"
-  description="How a Bluey car at Subiefest started Ghost Subie Adventures — Roman, his wife Michelle, their son Jonah, and Boo the blue heeler, overlanding Texas and beyond."
+  description="Ghost Subie Adventures — the best way to prepare is to go. Roman, his family, and the Ghost: a daily-driven Subaru Forester turned rolling classroom and adventure rig."
 >
   <div class="wrap">
     <div class="page-hero">
-      <span class="eyebrow">Preparedness Without Panic</span>
-      <h1>How a Bluey car started all of this.</h1>
+      <span class="eyebrow">Our story</span>
+      <h1>The best way to prepare is to go.</h1>
+      <p class="lead">
+        Ghost Subie Adventures is built on a simple belief: preparedness isn&rsquo;t paranoia
+        &mdash; it&rsquo;s freedom, and the path to preparedness doesn&rsquo;t need to be filled
+        with panic and fearmongering.
+      </p>
     </div>
+  </div>
 
-    <div class="split about-split">
+  <div class="band-black about-band">
+    <img
+      src="/images/about-family.jpg"
+      alt="Roman, Michelle, and Jonah together outdoors at camp"
+      class="about-family-photo"
+    />
+  </div>
+
+  <div class="wrap">
+    <div class="about-cols">
       <div class="prose">
         <p>
-          At our first Subiefest, my then-7-year-old son Jonah spotted a Bluey-themed Subaru
-          across the lot &mdash; and fell in love. Not just with the car, but with the whole
-          idea of it. The club. The people. The wave.
+          I&rsquo;m Roman, the driver behind the wheel and the storyteller behind the miles. What
+          started as a love of the outdoors and Subarus turned into a mission to show how
+          adventure, skill-building, and real-world readiness go hand in hand.
         </p>
         <p>
-          We joined Natalie&rsquo;s San Antonio car club that year, and she made Jonah feel like
-          he belonged from day one. We&rsquo;ve been Subaru people ever since.
+          At the peak of COVID, I listened to all the &ldquo;influencers&rdquo; giving
+          &ldquo;buy now&rdquo; pitches and bad advice. I got tired of it, so I asked: what if we
+          could make preparedness fun? What if the adventures we have on our own and with our
+          families could help us all be more prepared? Whether in the city or the wilderness,
+          those practical skills can help.
+        </p>
+        <blockquote class="pull-quote">
+          I run a 2022 Subaru Forester that&rsquo;s a daily driver &mdash; and much more.
+        </blockquote>
+        <p>
+          It&rsquo;s a rolling classroom. Every trail teaches something. Every breakdown becomes a
+          lesson. Every trip sharpens the skills that matter when life gets unpredictable. Out
+          here, preparedness isn&rsquo;t about stockpiling fear or flexing gear. It&rsquo;s about
+          learning, adapting, and becoming more capable one mile at a time.
         </p>
         <p>
-          The Ghost is our white Subaru Forester &mdash; and it&rsquo;s the family daily driver
-          first. School runs, grocery runs, San Antonio traffic. But most weekends, it earns
-          its name: loaded with camp gear, pointed at the horizon, gone.
+          It&rsquo;s an adventure rig. I&rsquo;m a husband and a dad, and the outdoors is where
+          our family connects best. We chase national parks, backroads, lake towns, and quiet
+          places where the world slows down. My son gets to see what capability looks like &mdash;
+          not in theory, but in practice. How to stay calm. How to solve problems. How to respect
+          nature. How to be ready for whatever comes next. And we get to do it while traveling to
+          some pretty cool places&hellip; just see for yourself.
         </p>
         <p>
-          I&rsquo;m Roman. I&rsquo;m a U.S. Army veteran &mdash; deployed around the world and
-          supported special operations &mdash; and these days my mission is simpler: my wife
-          Michelle, our son Jonah, our blue heeler Boo, and I camp, explore, and overland
-          across Texas and beyond &mdash; and I document all of it here and on the Ghost Subie
-          Adventures Podcast.
+          Ghost Subie Adventures is where I document that journey &mdash; the builds, the gear
+          that actually works (and doesn&rsquo;t), the skills that matter, and the adventures that
+          test them. It&rsquo;s storytelling with a purpose: showing that preparedness can be fun,
+          practical, and family-centered. No fearmongering. No doomsday vibes. Just real-world
+          capability built through exploration, curiosity, and miles on the odometer.
         </p>
         <p>
-          The philosophy is simple: <strong>Preparedness Without Panic.</strong> Real family
-          camping. Real skills. Real gear that&rsquo;s actually been slept in, cooked on, and
-          rained on. Zero fluff.
-        </p>
-        <p>
-          <strong>What&rsquo;s next:</strong> I&rsquo;m presenting at Mountain Readiness
-          (Fallout 2026 and Lonestar 2027), the podcast is coming back for a brand-new season,
-          and the Ghost&rsquo;s next big upgrade is on the horizon &mdash; an FSR Aspen Lite XL
-          rooftop tent. Stick around. Bring marshmallows.
+          If you&rsquo;re here, welcome to the ride. Explore the stories, learn the skills, and
+          join a community built on adventure, readiness, and the belief that the best way to
+          prepare&hellip; is to go.
         </p>
         <p class="about-cta">
-          <a href="/podcast" class="btn">Listen to the podcast</a>
-          <a
-            href="https://www.instagram.com/ghostsubieadventures"
-            class="btn btn-outline"
-            target="_blank"
-            rel="noopener"
-          >Follow @ghostsubieadventures</a>
+          <a href={redcircleUrl} class="btn btn-dark" target="_blank" rel="noopener">Hear the podcast &rarr;</a>
+          <a href="/field-notes" class="btn btn-outline">Read Field Notes</a>
         </p>
       </div>
-      <div class="about-photos">
-        <img
-          class="framed about-main"
-          src="/images/family-selfie.jpg"
-          alt="Roman with his wife Michelle and their son Jonah, smiling around a campfire"
-        />
+
+      <aside class="roman-aside">
         <img
           class="framed"
-          src="/images/roman-basecamp.jpg"
-          alt="Roman standing with the Ghost, his white Subaru Forester, at a Subaru Base Camp event"
+          src="/images/about-basecamp.jpg"
+          alt="Roman leaning on the Ghost beneath the Subaru Base Camp sign"
           loading="lazy"
         />
-      </div>
+        <h2>Roman &amp; the Ghost</h2>
+        <p>San Antonio, Texas. Family camp, Subaru culture, everyday preparedness.</p>
+        <p class="pills">
+          <span class="pill">Overlanding</span>
+          <span class="pill">Podcast</span>
+          <span class="pill">Family camp</span>
+        </p>
+      </aside>
     </div>
+
+    <div class="grid-3 about-cards">
+      <a href="/podcast" class="card about-card">
+        <div class="card-body">
+          <span class="card-meta">Podcast</span>
+          <h3>Real talk from a real rig</h3>
+          <p>Family overlanding, preparedness without panic, and conversations from the campfire.</p>
+          <span class="card-link">Listen in &rarr;</span>
+        </div>
+      </a>
+      <a href="/field-notes" class="card about-card">
+        <div class="card-body">
+          <span class="card-meta">Field Notes</span>
+          <h3>Written from the driver&rsquo;s seat</h3>
+          <p>Rig builds, trip reports, and preparedness lessons earned in the field.</p>
+          <span class="card-link">Read the notes &rarr;</span>
+        </div>
+      </a>
+      <a href="/checklist" class="card about-card">
+        <div class="card-body">
+          <span class="card-meta">Free field guide</span>
+          <h3>The Rig-Ready Checklist</h3>
+          <p>The exact pre-trip scan we run before family camp.</p>
+          <span class="card-link">Get the checklist &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <section class="section center road-cta">
+      <h2>Ready to hit the road?</h2>
+      <p><a href="/checklist" class="btn btn-dark">Get the Rig-Ready Checklist &rarr;</a></p>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .about-split { align-items: start; padding-bottom: 4.5rem; }
-  .about-photos { display: grid; gap: 1.4rem; }
-  .about-main {
-    aspect-ratio: 4 / 3;
-    /* Jonah is front-left in this selfie — keep him in frame */
-    object-position: 20% 80%;
+  .about-band {
+    display: flex;
+    justify-content: center;
+    padding: 0;
   }
-  .about-photos .framed { aspect-ratio: 4 / 3; }
-  .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .about-family-photo {
+    max-height: 560px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .about-cols {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 4rem;
+    padding: 4rem 0 5rem;
+  }
+  @media (max-width: 900px) { .about-cols { grid-template-columns: 1fr; } }
+  .prose p { margin-bottom: 1.5rem; }
+  .pull-quote {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height: 1.05;
+    color: var(--ink);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 2.6rem 0;
+    padding: 2rem 0;
+  }
+  .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
+  .roman-aside img { width: 100%; margin-bottom: 1.4rem; }
+  .roman-aside h2 { font-size: 1.9rem; margin-bottom: 0.5rem; }
+  .roman-aside p { color: var(--muted); font-size: 1rem; }
+  .pills { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+  .pill {
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: 3px;
+    padding: 0.4rem 0.9rem;
+    color: var(--ink);
+  }
+  .about-cards { padding: 0 0 1rem; }
+  .about-card { text-decoration: none; }
+  .about-card:hover { border-color: var(--ink); }
+  .road-cta h2 { margin-bottom: 1.6rem; }
 </style>

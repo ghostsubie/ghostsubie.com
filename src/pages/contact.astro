@@ -2,109 +2,71 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 /* ------------------------------------------------------------------
- * CONTACT FORM ENDPOINT — REPLACE BEFORE LAUNCH
- * This form POSTs to a form-handling service. Create a free form at
- * https://formspree.io (or a similar service) and paste your form ID
- * below. Until then the form will not deliver messages.
- * Example: "https://formspree.io/f/xabc1234"
+ * CONTACT — email lanes for now.
+ * Roman hasn't chosen a form-handling service yet. The three lanes below
+ * open a pre-addressed email. When he's ready, create a free form at
+ * https://formspree.io (or similar) and swap a lane (or the whole grid)
+ * for a <form> posting to the endpoint.
  * ------------------------------------------------------------------ */
-const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-const formIsConfigured = !FORM_ENDPOINT.includes('YOUR_FORM_ID');
+
+const lanes = [
+  {
+    title: 'Brand & press',
+    blurb: 'Partnerships, product testing, events',
+    subject: 'Partnership inquiry',
+  },
+  {
+    title: 'Podcast guest',
+    blurb: 'Bring a story to the campfire',
+    subject: 'Podcast guest pitch',
+  },
+  {
+    title: 'Just saying hi',
+    blurb: 'Subarus, trails, camp, gear',
+    subject: 'Just saying hi',
+  },
+];
+
+const mailto = (subject: string) =>
+  'mailto:ghostsubieadventures@gmail.com?subject=' + encodeURIComponent(subject);
 ---
 
 <BaseLayout
   title="Contact"
-  description="Say howdy — brand inquiries, podcast guest pitches, or just Subaru talk. Every note lands at base camp, and gets a real reply."
+  description="Contact Ghost Subie Adventures — brand inquiries, podcast guest pitches, or just saying hi. Every note lands at base camp and gets a real reply."
 >
   <div class="wrap">
     <div class="page-hero">
-      <span class="eyebrow">Get In Touch</span>
+      <span class="eyebrow">Contact</span>
       <h1>Say howdy.</h1>
       <p class="lead">
-        Brand inquiry, podcast guest pitch, or just want to talk Subarus &mdash; every note
-        lands at base camp, and gets a real reply.
+        Brand inquiry, podcast guest pitch, or just want to talk Subarus &mdash; pick a lane
+        and drop us a note.
       </p>
     </div>
 
-    <div class="split contact-split">
-      <form
-        class="contact-form"
-        action={FORM_ENDPOINT}
-        method="POST"
-      >
-        {!formIsConfigured && (
-          <p class="form-notice">
-            <strong>Heads up:</strong> the form endpoint isn&rsquo;t connected yet &mdash; this
-            form won&rsquo;t deliver until a form-service ID is added in
-            <code>src/pages/contact.astro</code>.
-          </p>
-        )}
-        <div>
-          <label for="cf-name">Name</label>
-          <input id="cf-name" name="name" type="text" required autocomplete="name" />
-        </div>
-        <div>
-          <label for="cf-email">Email</label>
-          <input id="cf-email" name="email" type="email" required autocomplete="email" />
-        </div>
-        <div>
-          <label for="cf-topic">Topic</label>
-          <select id="cf-topic" name="topic">
-            <option>Brand &amp; press</option>
-            <option>Podcast guest</option>
-            <option>Just saying hi</option>
-          </select>
-        </div>
-        <div>
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="6" required></textarea>
-        </div>
-        <div>
-          <button type="submit" class="btn">Send it</button>
-        </div>
-      </form>
-
-      <div class="contact-side">
-        <h3>Prefer email?</h3>
-        <p><a href="mailto:hello@ghostsubie.com" class="card-link big">hello@ghostsubie.com</a></p>
-        <h3>Find us</h3>
-        <p>
-          Instagram
-          <a
-            href="https://www.instagram.com/ghostsubieadventures"
-            target="_blank"
-            rel="noopener"
-          >@ghostsubieadventures</a>
-        </p>
-        <p class="side-note">
-          Pitching the podcast? Tell us your story in two sentences and link your best
-          episode or video &mdash; that&rsquo;s all we need to say yes.
-        </p>
+    <section class="section-tight contact-lanes">
+      <h2>Start with what brings you here.</h2>
+      <p class="lead">Every note lands at base camp &mdash; and gets a real reply.</p>
+      <div class="grid-3">
+        {lanes.map((lane) => (
+          <a href={mailto(lane.subject)} class="card lane-card">
+            <div class="card-body">
+              <h3>{lane.title}</h3>
+              <p>{lane.blurb} &rarr;</p>
+            </div>
+          </a>
+        ))}
       </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .contact-split { align-items: start; padding-bottom: 4.5rem; }
-  .form-notice {
-    background: #2a1f0e;
-    border: 1px solid #6b5b3e;
-    border-radius: 10px;
-    padding: 1rem 1.2rem;
-    font-size: 0.92rem;
-    color: var(--muted);
-  }
-  .form-notice strong { color: var(--amber); }
-  .form-notice code { color: var(--text); }
-  .contact-side h3 {
-    font-size: 1.1rem;
-    letter-spacing: 0.14em;
-    color: var(--amber);
-    margin: 1.6rem 0 0.4rem;
-  }
-  .contact-side h3:first-child { margin-top: 0; }
-  .contact-side p { color: var(--muted); }
-  .card-link.big { font-size: 1.15rem; }
-  .side-note { font-size: 0.93rem; border-left: 3px solid var(--ember); padding-left: 1rem; }
+  .contact-lanes { padding-bottom: 4.5rem; }
+  .contact-lanes h2 { margin-bottom: 0.4rem; }
+  .contact-lanes .lead { color: var(--muted); margin-bottom: 1.8rem; }
+  .lane-card { text-decoration: none; }
+  .lane-card h3 { margin: 0; }
+  .lane-card .card-link, .lane-card p:last-child { color: var(--amber); font-weight: 600; }
 </style>
