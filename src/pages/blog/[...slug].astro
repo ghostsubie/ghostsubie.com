@@ -22,7 +22,7 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
 <BaseLayout title={post.data.title} description={post.data.description}>
   <div class="wrap">
     <article class="post">
-      <p class="post-back"><a href="/field-notes" class="card-link">&larr; All From the Ghost</a></p>
+      <p class="post-back"><a href="/blog" class="card-link">&larr; All From the Ghost</a></p>
       <span class="card-meta">{post.data.category} &middot; {pubDate}</span>
       <h1>{post.data.title}</h1>
       <p class="lead">{post.data.description}</p>
@@ -32,7 +32,7 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
       <div class="prose">
         <Content />
       </div>
-      <p class="post-back bottom"><a href="/field-notes" class="card-link">&larr; All From the Ghost</a></p>
+      <p class="post-back bottom"><a href="/blog" class="card-link">&larr; All From the Ghost</a></p>
     </article>
   </div>
 </BaseLayout>

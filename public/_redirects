@@ -1,0 +1,2 @@
+/field-notes /blog 301
+/field-notes/* /blog/:splat 301
