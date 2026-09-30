@@ -3,7 +3,7 @@ title: "10 Things I Pack for Every Family Camp (and 3 I Stopped Packing)"
 description: "The non-negotiable core of our camp kit — plus the three things that kept riding along for years before I admitted they were dead weight."
 pubDate: 2026-09-02
 category: "Preparedness"
-image: "/images/camp-setup-fire.jpg"
+image: "/images/field-gear-layout.jpg"
 ---
 
 After dozens of family weekends in the Ghost, our packing list has been edited by reality. Here's what survived — and what got cut.
