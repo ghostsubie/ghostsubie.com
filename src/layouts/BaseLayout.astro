@@ -10,6 +10,9 @@ interface Props {
 }
 const { title, description, image = '/images/hero-daylight.jpg', noindex = false } = Astro.props;
 const pageTitle = title === 'Home' ? 'Ghost Subie Adventures | Preparedness Without Panic' : `${title} | Ghost Subie Adventures`;
+const metaDescription = description ?? 'Ghost Subie Adventures — preparedness without panic. Family overlanding, real-world readiness, and stories from the road.';
+const absoluteImage = `https://ghostsubie.com${image}`;
+const canonicalUrl = Astro.url.href;
 ---
 
 <!doctype html>
@@ -21,11 +24,17 @@ const pageTitle = title === 'Home' ? 'Ghost Subie Adventures | Preparedness With
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/images/logo.png" />
     <title>{pageTitle}</title>
-    <meta name="description" content={description ?? 'Ghost Subie Adventures — preparedness without panic. Family overlanding, real-world readiness, and stories from the road.'} />
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description ?? 'Preparedness without panic.'} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={absoluteImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={absoluteImage} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
