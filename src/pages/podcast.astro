@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const showUrl = 'https://podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799';
+const spotifyUrl = 'https://open.spotify.com/show/6XFwFvyItphkQbYsdminAI';
+const rssUrl = 'https://feeds.redcircle.com/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
+const redcircleUrl = 'https://www.redcircle.com/shows/1c89c053-9573-49fe-a9c6-b34f4c6b449d';
+const coverArt =
+  'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/6b/81/20/6b81201a-31f3-0a72-c93e-da030d1f2075/mza_9498050084739853986.jpg/600x600bb.jpg';
+
+const lineup = [
+  {
+    title: 'Subaru Basecamp',
+    blurb: 'Stories and lessons from Subaru Base Camp \u2014 community, capability, and the culture that keeps us coming back.',
+  },
+  {
+    title: 'Preparedness at the Movies',
+    blurb: 'What Hollywood gets right (and hilariously wrong) about being ready \u2014 and what we can actually steal from the screen.',
+  },
+  {
+    title: 'Why I Love My Wheels & Feels Drawer System',
+    blurb: 'The trunk upgrade that turned camp setup from chaos into a two-minute job.',
+  },
+];
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Ghost Subie Adventures Podcast — real talk from a real rig. Family overlanding, preparedness without the panic, and conversations from the campfire."
+>
+  <div class="wrap">
+    <div class="page-hero">
+      <span class="eyebrow">The Podcast</span>
+      <h1>Ghost Subie Adventures Podcast</h1>
+      <p class="lead">
+        Real talk from a real rig. Family overlanding, preparedness without the panic, and
+        conversations with the people building the overland and Subaru community &mdash;
+        recorded from the road, the campfire, and the driveway.
+      </p>
+      <p class="subscribe-row">
+        <a href={spotifyUrl} class="btn btn-outline" target="_blank" rel="noopener">Spotify</a>
+        <a href={showUrl} class="btn btn-outline" target="_blank" rel="noopener">Apple Podcasts</a>
+        <a href={rssUrl} class="btn btn-outline" target="_blank" rel="noopener">RSS</a>
+      </p>
+    </div>
+
+    <div class="embed-shell">
+      <iframe
+        src="https://embed.podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799"
+        height="450"
+        title="Ghost Subie Adventures on Apple Podcasts"
+        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- COMEBACK SEASON FEATURE -->
+    <section class="section-tight">
+      <div class="split comeback">
+        <img
+          src={coverArt}
+          alt="Ghost Subie Adventures Podcast cover art"
+          class="framed comeback-art"
+          loading="lazy"
+        />
+        <div>
+          <span class="eyebrow">Now Playing</span>
+          <h2>The Comeback Season</h2>
+          <p class="lead">
+            The podcast is back with a brand-new season &mdash; ten episodes on the rig, the
+            family, and the preparedness mindset, recorded where it actually happens. New
+            episodes drop weekly.
+          </p>
+          <p>
+            <a href={showUrl} class="btn" target="_blank" rel="noopener">Follow the show</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEASON LINEUP -->
+    <section class="section-tight">
+      <span class="eyebrow">This Season</span>
+      <h2>On the lineup</h2>
+      <div class="grid-3 lineup">
+        {lineup.map((ep) => (
+          <article class="card">
+            <div class="card-body">
+              <span class="card-meta">Episode</span>
+              <h3>{ep.title}</h3>
+              <p>{ep.blurb}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="redcircle-note">
+        Prefer another app? Find every episode on
+        <a href={redcircleUrl} target="_blank" rel="noopener">RedCircle</a>.
+      </p>
+    </section>
+
+    <!-- GUEST BAND -->
+    <section class="section band-dark center guest-band">
+      <div class="wrap">
+        <span class="eyebrow">Be a Guest</span>
+        <h2>Got a story worth telling around the campfire?</h2>
+        <p class="lead">
+          We talk with overlanders, builders, and preparedness folks &mdash; real people with
+          real miles behind them.
+        </p>
+        <p><a href="/contact" class="btn">Pitch to be a guest</a></p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .subscribe-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .comeback { margin-top: 1rem; }
+  .comeback-art { aspect-ratio: 1 / 1; max-width: 420px; width: 100%; }
+  .lineup { margin-top: 1.8rem; }
+  .redcircle-note { color: var(--muted); margin-top: 1.6rem; }
+  .guest-band { margin: 3rem 0 4.5rem; border-radius: var(--radius); }
+</style>

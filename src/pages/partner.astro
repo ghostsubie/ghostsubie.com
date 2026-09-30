@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const offerings = [
+  {
+    n: '01',
+    title: 'Expo & Car-Show Display',
+    body: 'Your product in our setup at Overland Expo, Subiefest, and regional shows \u2014 seen, touched, and asked about by people who actually camp.',
+  },
+  {
+    n: '02',
+    title: 'Podcast Features',
+    body: 'Dedicated segments and full episodes on the Ghost Subie Adventures Podcast \u2014 real conversation, not a scripted ad read.',
+  },
+  {
+    n: '03',
+    title: 'Blog Reviews & Build Series',
+    body: 'Long-form, photo-documented real-world testing on Field Notes. If it survives our family weekends, that means something.',
+  },
+  {
+    n: '04',
+    title: 'Social Content',
+    body: 'Reels, carousels, and stories for an engaged community that actually camps \u2014 shot in the field, not in a studio.',
+  },
+  {
+    n: '05',
+    title: 'Speaking Engagements',
+    body: 'I speak on vehicle preparedness and family overlanding at expos, shows, and club events \u2014 including Mountain Readiness Fallout 2026 and Lonestar 2027.',
+  },
+  {
+    n: '06',
+    title: 'Custom UGC & Content Licensing',
+    body: 'I shoot ready-to-post photos and video of your product in real camp and overland use \u2014 licensed for your own channels.',
+  },
+];
+---
+
+<BaseLayout
+  title="Partner With Us"
+  description="Partner with Ghost Subie Adventures — expo displays, podcast features, real-world gear testing, speaking, and licensed UGC from a daily-driven family overland rig."
+>
+  <div class="wrap">
+    <div class="page-hero">
+      <span class="eyebrow">Media Kit</span>
+      <h1>Take your brand off-road with us.</h1>
+      <p class="lead">
+        Ghost Subie Adventures isn&rsquo;t a garage queen with a ring light &mdash; it&rsquo;s a
+        daily-driven family rig that actually gets used. When we run your gear, it gets rained
+        on, dusted, dog-haired, and kid-tested.
+      </p>
+    </div>
+
+    <section class="section-tight">
+      <span class="eyebrow">What We Offer</span>
+      <div class="grid-3 offerings">
+        {offerings.map((o) => (
+          <article class="card">
+            <div class="card-body">
+              <span class="card-meta">No. {o.n}</span>
+              <h3>{o.title}</h3>
+              <p>{o.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section band-dark center partner-cta">
+      <div class="wrap">
+        <span class="eyebrow">Let&rsquo;s Talk</span>
+        <h2>Got gear that deserves a real test?</h2>
+        <p class="lead">
+          Tell us what you make and what you&rsquo;re dreaming up &mdash; every note gets a
+          real reply.
+        </p>
+        <p><a href="mailto:hello@ghostsubie.com" class="btn">Start the conversation</a></p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .offerings { margin-top: 1.8rem; }
+  .partner-cta { margin: 3rem 0 4.5rem; border-radius: var(--radius); }
+</style>

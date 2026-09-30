@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('field-notes');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <div class="wrap">
+    <article class="post">
+      <p class="post-back"><a href="/field-notes" class="card-link">&larr; All Field Notes</a></p>
+      <span class="card-meta">{post.data.category} &middot; {pubDate}</span>
+      <h1>{post.data.title}</h1>
+      <p class="lead">{post.data.description}</p>
+      {post.data.image && (
+        <img class="post-hero framed-img" src={post.data.image} alt={post.data.title} />
+      )}
+      <div class="prose">
+        <Content />
+      </div>
+      <p class="post-back bottom"><a href="/field-notes" class="card-link">&larr; All Field Notes</a></p>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .post { max-width: 46rem; margin: 0 auto; padding: 3.5rem 0 4.5rem; }
+  .post h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.5rem 0 0.8rem; }
+  .post-back { margin: 0 0 1.4rem; }
+  .post-back.bottom { margin: 3rem 0 0; }
+  .post-hero { margin: 2rem 0; }
+  .framed-img {
+    width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    object-fit: cover;
+    max-height: 420px;
+  }
+</style>

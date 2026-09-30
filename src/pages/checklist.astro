@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/*
+ * Campfire-list / checklist signup.
+ * Roman is setting up Kit (ConvertKit) himself. When the Kit form embed
+ * code is ready, paste it inside the KIT_FORM_EMBED block below,
+ * replacing the placeholder div.
+ */
+
+const inside = [
+  'Six prep sections: vehicle, camp systems, and personal readiness',
+  'The 60-second trailhead scan we run before every departure',
+  'Emergency if-thens: the decisions made before you need them',
+  'The $50 starter kit that covers the most common trailhead problems',
+];
+---
+
+<BaseLayout
+  title="Free Rig-Ready Checklist"
+  description="The Rig-Ready Checklist — the exact pre-trip checklist we run before every family camp. Free forever."
+>
+  <div class="wrap">
+    <div class="split checklist-hero">
+      <div>
+        <span class="eyebrow">Free Download</span>
+        <h1>Don&rsquo;t hit the trail unprepared.</h1>
+        <p class="lead">
+          The Rig-Ready Checklist &mdash; the exact pre-trip checklist we run before every
+          family camp. Print it, laminate it, keep it in the glovebox.
+        </p>
+        <ul class="checklist-preview">
+          {inside.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="checklist-form-card">
+        <h2>Get the checklist</h2>
+        <p>Drop your email and it&rsquo;s yours &mdash; free forever.</p>
+
+        <!-- KIT_FORM_EMBED: paste the Kit/ConvertKit form embed code here (replaces the placeholder div below). -->
+        <div class="kit-slot" data-kit-slot="checklist">
+          <p><strong>Kit form embed goes here.</strong></p>
+          <p>Paste the Kit form embed code in <code>src/pages/checklist.astro</code> where marked <code>KIT_FORM_EMBED</code>. The form should deliver the Rig-Ready Checklist PDF on signup.</p>
+        </div>
+
+        <p class="fine-print">
+          Free forever. One email a week after that. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .checklist-hero { padding: 4rem 0 4.5rem; align-items: start; }
+  .checklist-form-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2.2rem;
+  }
+  .checklist-form-card h2 { margin-bottom: 0.4rem; }
+  .fine-print { color: var(--muted); font-size: 0.9rem; margin: 1.2rem 0 0; }
+</style>

@@ -1,0 +1,78 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/field-notes', label: 'Field Notes' },
+  { href: '/partner', label: 'Partner' },
+  { href: '/contact', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="brand" aria-label="Ghost Subie Adventures — home">
+      <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1a1611"/>
+        <path d="M32 8c2 8-6 12-6 20 0 4 2 7 5 9-1-6 1-11 5-14 0 7 8 9 8 19a12 12 0 0 1-24 0c0-8 5-12 8-16 1 4 4 6 4 6-2-8-2-16 0-24z" fill="#f59e0b"/>
+        <path d="M32 34c1 4-3 6-3 10a6 6 0 0 0 12 0c0-4-2.5-6-4-8-.5 2-2 3-2 3 1-4 1-8-3-5z" fill="#ea580c"/>
+      </svg>
+      <span class="brand-text">Ghost Subie <em>Adventures</em></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} class={path === l.href || (l.href !== '/' && path.startsWith(l.href)) ? 'active' : ''}>
+          {l.label}
+        </a>
+      ))}
+      <a href="/checklist" class="btn btn-nav">Free Checklist</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(13, 11, 9, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+  .brand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1;
+  }
+  .brand-text em { font-style: normal; color: var(--amber); }
+  .nav { display: flex; align-items: center; gap: 0.25rem 1.1rem; flex-wrap: wrap; }
+  .nav a:not(.btn-nav) {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.35rem 0.1rem;
+  }
+  .nav a:not(.btn-nav):hover { color: var(--amber); }
+  .nav a.active { color: var(--amber); }
+  .btn-nav { padding: 0.5rem 1.2rem; font-size: 1rem; }
+  @media (max-width: 640px) {
+    .header-inner { justify-content: center; text-align: center; }
+    .nav { justify-content: center; }
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="How a Bluey car at Subiefest started Ghost Subie Adventures — Roman, his wife Michelle, their son Jonah, and Boo the blue heeler, overlanding Texas and beyond."
+>
+  <div class="wrap">
+    <div class="page-hero">
+      <span class="eyebrow">Preparedness Without Panic</span>
+      <h1>How a Bluey car started all of this.</h1>
+    </div>
+
+    <div class="split about-split">
+      <div class="prose">
+        <p>
+          At our first Subiefest, my then-7-year-old son Jonah spotted a Bluey-themed Subaru
+          across the lot &mdash; and fell in love. Not just with the car, but with the whole
+          idea of it. The club. The people. The wave.
+        </p>
+        <p>
+          We joined Natalie&rsquo;s San Antonio car club that year, and she made Jonah feel like
+          he belonged from day one. We&rsquo;ve been Subaru people ever since.
+        </p>
+        <p>
+          The Ghost is our white Subaru Forester &mdash; and it&rsquo;s the family daily driver
+          first. School runs, grocery runs, San Antonio traffic. But most weekends, it earns
+          its name: loaded with camp gear, pointed at the horizon, gone.
+        </p>
+        <p>
+          I&rsquo;m Roman. I&rsquo;m a U.S. Army veteran &mdash; deployed around the world and
+          supported special operations &mdash; and these days my mission is simpler: my wife
+          Michelle, our son Jonah, our blue heeler Boo, and I camp, explore, and overland
+          across Texas and beyond &mdash; and I document all of it here and on the Ghost Subie
+          Adventures Podcast.
+        </p>
+        <p>
+          The philosophy is simple: <strong>Preparedness Without Panic.</strong> Real family
+          camping. Real skills. Real gear that&rsquo;s actually been slept in, cooked on, and
+          rained on. Zero fluff.
+        </p>
+        <p>
+          <strong>What&rsquo;s next:</strong> I&rsquo;m presenting at Mountain Readiness
+          (Fallout 2026 and Lonestar 2027), the podcast is coming back for a brand-new season,
+          and the Ghost&rsquo;s next big upgrade is on the horizon &mdash; an FSR Aspen Lite XL
+          rooftop tent. Stick around. Bring marshmallows.
+        </p>
+        <p class="about-cta">
+          <a href="/podcast" class="btn">Listen to the podcast</a>
+          <a
+            href="https://www.instagram.com/ghostsubieadventures"
+            class="btn btn-outline"
+            target="_blank"
+            rel="noopener"
+          >Follow @ghostsubieadventures</a>
+        </p>
+      </div>
+      <div class="about-photos">
+        <img
+          class="framed about-main"
+          src="/images/family-selfie.jpg"
+          alt="Roman with his wife Michelle and their son Jonah, smiling around a campfire"
+        />
+        <img
+          class="framed"
+          src="/images/roman-basecamp.jpg"
+          alt="Roman standing with the Ghost, his white Subaru Forester, at a Subaru Base Camp event"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-split { align-items: start; padding-bottom: 4.5rem; }
+  .about-photos { display: grid; gap: 1.4rem; }
+  .about-main {
+    aspect-ratio: 4 / 3;
+    /* Jonah is front-left in this selfie — keep him in frame */
+    object-position: 20% 80%;
+  }
+  .about-photos .framed { aspect-ratio: 4 / 3; }
+  .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+</style>

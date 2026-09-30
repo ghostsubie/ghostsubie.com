@@ -1,0 +1,74 @@
+---
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/field-notes', label: 'Field Notes' },
+  { href: '/partner', label: 'Partner' },
+  { href: '/checklist', label: 'Free Checklist' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">Ghost Subie Adventures</p>
+      <p class="footer-tag">Preparedness Without Panic.<br />San Antonio, Texas</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-nav">
+        {nav.map((l) => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div>
+      <p class="footer-heading">Follow along</p>
+      <ul class="footer-social">
+        <li><a href="https://www.instagram.com/ghostsubieadventures" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://open.spotify.com/show/6XFwFvyItphkQbYsdminAI" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://podcasts.apple.com/us/podcast/ghost-subie-adventures/id1874749799" target="_blank" rel="noopener">Apple Podcasts</a></li>
+      </ul>
+      <p class="footer-contact"><a href="mailto:hello@ghostsubie.com">hello@ghostsubie.com</a></p>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Ghost Subie Adventures &middot; Built in San Antonio, TX</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); background: #0a0806; margin-top: 2rem; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.4rem;
+  }
+  .footer-tag, .footer-contact { color: var(--muted); font-size: 0.95rem; }
+  .footer-heading {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.9rem;
+    color: var(--amber);
+    margin: 0 0 0.6rem;
+  }
+  .footer-nav, .footer-social { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+  .footer-nav a, .footer-social a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+  .footer-nav a:hover, .footer-social a:hover { color: var(--amber); }
+  .footer-contact a { color: var(--muted); }
+  .footer-base { border-top: 1px solid var(--line); padding-top: 1.2rem; padding-bottom: 1.6rem; }
+  .footer-base p { margin: 0; color: #7d7260; font-size: 0.88rem; }
+</style>
