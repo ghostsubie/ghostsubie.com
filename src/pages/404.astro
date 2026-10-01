@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Lost the trail"
+  description="This page wandered off the trail. Find your way back to Ghost Subie Adventures — family overlanding and preparedness without panic."
+  noindex={true}
+>
+  <div class="wrap">
+    <div class="lost">
+      <span class="eyebrow">Off the map</span>
+      <h1>Looks like you took a wrong turn.</h1>
+      <p class="lead">
+        This page wandered off the trail — but the campfire&rsquo;s still burning.
+        Here&rsquo;s the way back:
+      </p>
+      <p class="lost-cta">
+        <a href="/" class="btn btn-rust">Back to base camp &rarr;</a>
+      </p>
+      <p class="lost-links">
+        <a href="/checklist" class="rust-link">Free Rig-Ready Checklist</a>
+        <span aria-hidden="true"> &middot; </span>
+        <a href="/podcast" class="rust-link">The podcast</a>
+        <span aria-hidden="true"> &middot; </span>
+        <a href="/blog" class="rust-link">From the Ghost</a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lost {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .lost .lead { margin-left: auto; margin-right: auto; }
+  .lost-cta { margin: 2rem 0 1.4rem; }
+  .lost-links { color: var(--muted); }
+</style>

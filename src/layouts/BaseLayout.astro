@@ -9,10 +9,29 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description, image = '/images/hero-daylight.jpg', noindex = false } = Astro.props;
-const pageTitle = title === 'Home' ? 'Ghost Subie Adventures | Preparedness Without Panic' : `${title} | Ghost Subie Adventures`;
+const pageTitle = title === 'Home' ? 'Family Overlanding & Preparedness Without Panic | Ghost Subie Adventures' : `${title} | Ghost Subie Adventures`;
 const metaDescription = description ?? 'Ghost Subie Adventures — preparedness without panic. Family overlanding, real-world readiness, and stories from the road.';
 const absoluteImage = `https://ghostsubie.com${image}`;
 const canonicalUrl = Astro.url.href;
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Ghost Subie Adventures',
+  url: 'https://ghostsubie.com/',
+  logo: 'https://ghostsubie.com/images/logo.png',
+  description: metaDescription,
+  sameAs: [
+    'https://www.instagram.com/ghostsubieadventures',
+    'https://www.tiktok.com/@ghostsubietx',
+    'https://open.spotify.com/show/6XFwFvyItphkQbYsdminAI',
+  ],
+};
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Ghost Subie Adventures',
+  url: 'https://ghostsubie.com/',
+};
 ---
 
 <!doctype html>
@@ -35,6 +54,8 @@ const canonicalUrl = Astro.url.href;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={absoluteImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

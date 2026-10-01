@@ -17,9 +17,38 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+const postUrl = Astro.url.href;
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  image: post.data.image
+    ? `https://ghostsubie.com${post.data.image}`
+    : 'https://ghostsubie.com/images/hero-daylight.jpg',
+  datePublished: post.data.pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Roman',
+    url: 'https://ghostsubie.com/about',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Ghost Subie Adventures',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://ghostsubie.com/images/logo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': postUrl,
+  },
+};
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(blogJsonLd)} />
   <div class="wrap">
     <article class="post">
       <p class="post-back"><a href="/blog" class="card-link">&larr; All From the Ghost</a></p>
@@ -32,6 +61,14 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
       <div class="prose">
         <Content />
       </div>
+      <div class="card cta-card">
+        <div class="card-body">
+          <span class="card-meta">Free field guide</span>
+          <h3>Take the Rig-Ready Checklist on your next trip.</h3>
+          <p>The exact pre-trip scan we run before family camp — free.</p>
+          <p><a href="/checklist" class="btn btn-rust">Get the free checklist &rarr;</a></p>
+        </div>
+      </div>
       <p class="post-back bottom"><a href="/blog" class="card-link">&larr; All From the Ghost</a></p>
     </article>
   </div>
@@ -43,6 +80,8 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-US', {
   .post-back { margin: 0 0 1.4rem; }
   .post-back.bottom { margin: 3rem 0 0; }
   .post-hero { margin: 2rem 0; }
+  .cta-card { margin-top: 3rem; text-align: center; }
+  .cta-card p:last-child { margin-bottom: 0; }
   .framed-img {
     width: 100%;
     border-radius: var(--radius);
