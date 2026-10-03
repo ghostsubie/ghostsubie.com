@@ -34,16 +34,24 @@ const mailto = (subject: string) =>
 <BaseLayout
   title="Contact"
   description="Contact Ghost Subie Adventures — brand inquiries, podcast guest pitches, or just saying hi. Every note lands at base camp and gets a real reply."
-  image="/images/ghost-basecamp-lineup.jpg"
+  image="/images/about-basecamp.jpg"
 >
   <div class="wrap">
-    <div class="page-hero">
-      <span class="eyebrow">Contact</span>
-      <h1>Say howdy.</h1>
-      <p class="lead">
-        Brand inquiry, podcast guest pitch, or just want to talk Subarus &mdash; pick a lane
-        and drop us a note.
-      </p>
+    <div class="split contact-hero">
+      <div class="page-hero">
+        <span class="eyebrow">Contact</span>
+        <h1>Say howdy.</h1>
+        <p class="lead">
+          Brand inquiry, podcast guest pitch, or just want to talk Subarus &mdash; pick a lane
+          and drop us a note.
+        </p>
+      </div>
+      <img
+        class="framed"
+        src="/images/about-basecamp.jpg"
+        alt="Roman leaning on the Ghost beneath the Subaru Base Camp sign"
+        loading="lazy"
+      />
     </div>
 
     <section class="section-tight contact-lanes">
@@ -94,6 +102,9 @@ const mailto = (subject: string) =>
 </BaseLayout>
 
 <style>
+  .contact-hero { padding: 3rem 0 1rem; }
+  .contact-hero .page-hero { padding: 0; }
+  .contact-hero img { width: 100%; height: 100%; max-height: 420px; object-fit: cover; }
   .contact-lanes { padding-bottom: 4.5rem; }
   .contact-lanes h2 { margin-bottom: 0.4rem; }
   .contact-lanes .lead { color: var(--muted); margin-bottom: 1.8rem; }
