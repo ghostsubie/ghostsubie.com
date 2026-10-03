@@ -47,7 +47,7 @@ const blogJsonLd = {
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.image ?? '/images/story-campfire.jpg'}>
   <script type="application/ld+json" set:html={JSON.stringify(blogJsonLd)} />
   <div class="wrap">
     <article class="post">
