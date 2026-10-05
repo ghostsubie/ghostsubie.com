@@ -42,9 +42,9 @@ That alone is worth more than a locker on a lot of weekends.
 
 Let's just get this out of the way:
 
-The Ghost doesn't have low range — the CVT and all-wheel drive handle just about everything you can throw at it. (I know I just made a 4x4 driver spit their coffee, but it's true. ☕)
+The Ghost doesn't have low range — the CVT and all-wheel drive can handle just about everything you can throw at it. (I know I just made a 4x4 driver spit their coffee, but it's true. ☕)
 
-It doesn't have locking differentials. It doesn't have a body-on-frame chassis. And it definitely doesn't have the articulation to crawl over boulders like it's a Jeep on 35s.
+It doesn't have locking differentials (they can be bought, for the rear, and it really changes daily driving, so it's possible, but for most not practical). It doesn't have a body-on-frame chassis. And it definitely doesn't have the articulation to crawl over boulders like it's a Jeep on 35s.
 
 It's a 2022 Forester — base model, not even the fancy trim — just a CVT and symmetrical all-wheel drive. That's it.
 
