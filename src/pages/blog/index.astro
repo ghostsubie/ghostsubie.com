@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const filters = [
   { label: 'All notes', value: 'all' },
   { label: 'Rig builds', value: 'rig-builds' },
+  { label: 'Gear reviews', value: 'gear-reviews' },
   { label: 'Family camp', value: 'family-camp' },
   { label: 'Preparedness', value: 'preparedness' },
   { label: 'Trip reports', value: 'trip-reports' },
@@ -30,13 +31,6 @@ const stack = [
     title: 'Preparedness Without Panic',
     blurb: 'Readiness built around likely problems, useful skills, and a calm plan.',
     href: '/blog/what-preparedness-without-panic-actually-means',
-  },
-  {
-    category: 'rig-builds',
-    eyebrow: 'Rig builds',
-    title: 'Why I Love My Wheels & Feels Drawer System',
-    blurb: 'The real-world layout, access, and organization choices that keep the Ghost ready for errands, emergencies, and camp.',
-    href: '/blog/why-i-love-my-wheels-and-feels-drawer-system',
   },
   {
     category: 'family-camp',
@@ -97,9 +91,9 @@ const stack = [
         </a>
       ))}
       <div class="note-row empty-state" id="filter-empty" hidden>
-        <span class="card-meta">Trip reports</span>
-        <h3>No trip reports yet</h3>
-        <p>The Ghost rolls into Subiefest Midwest on Oct 10 — the recap lands right after. Stories incoming. 👻</p>
+        <span class="card-meta" id="filter-empty-eyebrow"></span>
+        <h3 id="filter-empty-title"></h3>
+        <p id="filter-empty-text"></p>
       </div>
     </div>
   </div>
@@ -109,6 +103,21 @@ const stack = [
   const pills = document.querySelectorAll('[data-filter]');
   const rows = document.querySelectorAll('#note-stack [data-category]');
   const empty = document.getElementById('filter-empty');
+  const emptyEyebrow = document.getElementById('filter-empty-eyebrow');
+  const emptyTitle = document.getElementById('filter-empty-title');
+  const emptyText = document.getElementById('filter-empty-text');
+  const emptyMessages = {
+    'trip-reports': {
+      eyebrow: 'Trip reports',
+      title: 'No trip reports yet',
+      text: 'The Ghost rolls into Subiefest Midwest on Oct 10 — the recap lands right after. Stories incoming. 👻',
+    },
+    'gear-reviews': {
+      eyebrow: 'Gear reviews',
+      title: 'No gear reviews yet',
+      text: 'The Kammok Crosswing review lands after Beyond City Limits (Oct 18). Real gear, real dirt, honest verdicts.',
+    },
+  };
   pills.forEach((pill) => {
     pill.addEventListener('click', () => {
       pills.forEach((p) => p.classList.remove('active'));
@@ -116,11 +125,20 @@ const stack = [
       const f = pill.getAttribute('data-filter');
       let visible = 0;
       rows.forEach((row) => {
-        const show = f === 'all' || row.getAttribute('data-category') === f;
+        const cats = row.getAttribute('data-category').split(' ');
+        const show = f === 'all' || cats.includes(f);
         row.hidden = !show;
         if (show) visible++;
       });
-      empty.hidden = visible > 0;
+      const msg = emptyMessages[f];
+      if (visible === 0 && msg) {
+        emptyEyebrow.textContent = msg.eyebrow;
+        emptyTitle.textContent = msg.title;
+        emptyText.textContent = msg.text;
+        empty.hidden = false;
+      } else {
+        empty.hidden = true;
+      }
     });
   });
 </script>
