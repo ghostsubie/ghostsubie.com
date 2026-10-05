@@ -3,7 +3,7 @@ title: "What 'Preparedness Without Panic' Actually Means"
 description: "It's not about fear. It's about capability — the quiet confidence that comes from skills, systems, and a rig that's ready."
 pubDate: 2026-09-10
 category: "Preparedness"
-image: "/images/jonah-fishing.jpg"
+image: "/images/jonah-fishing-hero.jpg"
 ---
 
 ## The truth about what it is
