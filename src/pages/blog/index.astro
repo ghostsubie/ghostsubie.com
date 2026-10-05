@@ -1,44 +1,49 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const filters = ['All notes', 'Rig builds', 'Trip reports', 'Preparedness'];
+const filters = [
+  { label: 'All notes', value: 'all' },
+  { label: 'Rig builds', value: 'rig-builds' },
+  { label: 'Family camp', value: 'family-camp' },
+  { label: 'Preparedness', value: 'preparedness' },
+  { label: 'Trip reports', value: 'trip-reports' },
+];
 
 const stack = [
   {
-    eyebrow: 'Family overlanding',
+    category: 'family-camp',
+    eyebrow: 'Family camp',
     title: 'Overlanding With Kids: What Actually Works',
     blurb: 'Real-world tips for overlanding with kids — what works, what doesn’t, and what we’d never leave home without.',
     href: '/blog/overlanding-with-kids-what-actually-works',
   },
   {
-    eyebrow: 'Family overlanding',
+    category: 'family-camp',
+    eyebrow: 'Family camp',
     title: 'The Family Overland Packing List: What Earns Space in Our Forester',
     blurb: 'Our actual packing list — every item earns its spot next to a kid, a dog, and a drawer system.',
     href: '/blog/family-overland-packing-list',
   },
   {
-    eyebrow: 'Rig builds',
-    title: 'Can You Overland in a Subaru Forester?',
-    blurb: 'What a base-model Forester is, what it isn’t, what we changed, and what actually matters on the trail.',
-    href: '/blog/can-you-overland-in-a-subaru-forester',
-  },
-  {
+    category: 'preparedness',
     eyebrow: 'Preparedness',
     title: 'Preparedness Without Panic',
     blurb: 'Readiness built around likely problems, useful skills, and a calm plan.',
     href: '/blog/what-preparedness-without-panic-actually-means',
   },
   {
+    category: 'rig-builds',
+    eyebrow: 'Rig builds',
+    title: 'Why I Love My Wheels & Feels Drawer System',
+    blurb: 'The real-world layout, access, and organization choices that keep the Ghost ready for errands, emergencies, and camp.',
+    href: '/blog/why-i-love-my-wheels-and-feels-drawer-system',
+  },
+  {
+    category: 'family-camp',
     eyebrow: 'Family camp',
     title: 'The always-packed ten',
     blurb: 'The gear that earns a permanent place in the Ghost.',
     href: '/blog/10-things-i-pack-for-every-family-camp',
-  },
-  {
-    eyebrow: 'Trip report',
-    title: 'What the road taught us',
-    blurb: 'The wins, misses, and changes that follow every camp.',
-    href: null,
   },
 ];
 ---
@@ -58,50 +63,67 @@ const stack = [
       </p>
       <p class="filters">
         {filters.map((f, i) => (
-          <span class={i === 0 ? 'filter-pill active' : 'filter-pill'}>{f}</span>
+          <button type="button" data-filter={f.value} class={i === 0 ? 'filter-pill active' : 'filter-pill'}>{f.label}</button>
         ))}
       </p>
     </div>
 
     <article class="card featured-card">
-      <a href="/blog/why-i-love-my-wheels-and-feels-drawer-system" class="featured-img" aria-label="Why I Love My Wheels & Feels Drawer System">
+      <a href="/blog/can-you-overland-in-a-subaru-forester" class="featured-img" aria-label="Can You Overland in a Subaru Forester?">
         <img
-          src="/images/field-drawer.jpg"
-          alt="The Ghost&rsquo;s organized Wheels & Feels drawer and camp gear setup"
+          src="/images/forester-hero-brush.jpg"
+          alt="The Ghost — a white Subaru Forester — pushing through the brush on the trail"
         />
       </a>
       <div class="card-body">
-        <span class="card-meta">Featured rig build</span>
+        <span class="card-meta">Featured post</span>
         <h2>
-          <a href="/blog/why-i-love-my-wheels-and-feels-drawer-system">Why I Love My Wheels &amp; Feels Drawer System</a>
+          <a href="/blog/can-you-overland-in-a-subaru-forester">Can You Overland in a Subaru Forester?</a>
         </h2>
         <p>
-          The real-world layout, access, and organization choices that keep the Ghost ready for
-          errands, emergencies, and camp.
+          What a base-model Forester is, what it isn&rsquo;t, what we changed, and what actually
+          matters on the trail.
         </p>
-        <a href="/blog/why-i-love-my-wheels-and-feels-drawer-system" class="card-link">Read the note &rarr;</a>
+        <a href="/blog/can-you-overland-in-a-subaru-forester" class="card-link">Read the note &rarr;</a>
       </div>
     </article>
 
-    <div class="note-stack">
+    <div class="note-stack" id="note-stack">
       {stack.map((note) => (
-        note.href ? (
-          <a href={note.href} class="note-row">
-            <span class="card-meta">{note.eyebrow}</span>
-            <h3>{note.title}</h3>
-            <p>{note.blurb}</p>
-          </a>
-        ) : (
-          <div class="note-row">
-            <span class="card-meta">{note.eyebrow}</span>
-            <h3>{note.title}</h3>
-            <p>{note.blurb}</p>
-          </div>
-        )
+        <a href={note.href} class="note-row" data-category={note.category}>
+          <span class="card-meta">{note.eyebrow}</span>
+          <h3>{note.title}</h3>
+          <p>{note.blurb}</p>
+        </a>
       ))}
+      <div class="note-row empty-state" id="filter-empty" hidden>
+        <span class="card-meta">Trip reports</span>
+        <h3>No trip reports yet</h3>
+        <p>The Ghost rolls into Subiefest Midwest on Oct 10 — the recap lands right after. Stories incoming. 👻</p>
+      </div>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const pills = document.querySelectorAll('[data-filter]');
+  const rows = document.querySelectorAll('#note-stack [data-category]');
+  const empty = document.getElementById('filter-empty');
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const f = pill.getAttribute('data-filter');
+      let visible = 0;
+      rows.forEach((row) => {
+        const show = f === 'all' || row.getAttribute('data-category') === f;
+        row.hidden = !show;
+        if (show) visible++;
+      });
+      empty.hidden = visible > 0;
+    });
+  });
+</script>
 
 <style>
   .filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem; }
@@ -116,7 +138,9 @@ const stack = [
     padding: 0.5rem 1.1rem;
     color: var(--muted);
     background: var(--card);
+    cursor: pointer;
   }
+  .filter-pill:hover { border-color: var(--black); color: var(--text); }
   .filter-pill.active { background: var(--black); border-color: var(--black); color: var(--cream); }
   .featured-card {
     display: grid;
@@ -141,7 +165,9 @@ const stack = [
     text-decoration: none;
     transition: border-color 0.18s ease, transform 0.18s ease;
   }
+  .note-row[hidden] { display: none; }
   a.note-row:hover { border-color: #4a3d28; transform: translateY(-3px); }
   .note-row h3 { margin: 0.4rem 0 0.4rem; color: var(--text); }
   .note-row p { color: var(--muted); margin: 0; }
+  .empty-state { border-top-color: var(--amber); }
 </style>
